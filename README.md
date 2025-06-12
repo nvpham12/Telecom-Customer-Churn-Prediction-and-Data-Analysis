@@ -1,8 +1,8 @@
 # Project Overview
-This is a project on that applies Extreme Gradient Boosting (XGBoost) to predict whether a telecom customer will cancel their plan or subscription (churn). For more technical details, refer to the Jupyter Notebook file.
+This is a project on that applies Extreme Gradient Boosting (XGBoost) to predict whether a telecom customer will cancel their plan or subscription (churn). Seeds are set for reproducibility. For more technical details, refer to the Jupyter Notebook file.
 
 # Data
-- The data is sourced from IBM's Base Samples. It contains information on telecom customers and churn such as Contract Type, Monthly Charges, and Tenure.
+- The data is sourced from IBM's Base Samples. It contains synthetic information on telecom customers such as Contract Type, Monthly Charges, Tenure, and whether they churned.
 - A copy of the dataset can be downloaded from: https://www.kaggle.com/datasets/blastchar/telco-customer-churn
 - More information about the data can be found here: https://community.ibm.com/community/user/blogs/steven-macko/2019/07/11/telco-customer-churn-1113
 
@@ -10,7 +10,7 @@ This is a project on that applies Extreme Gradient Boosting (XGBoost) to predict
 - Missing values are imputed.
 - Duplicates and unreasonable values are checked for.
 - Data types are changed to appropriate formats for manipulation and modeling.
-- Extra whitespace is removed from object data types.
+- Extra whitespace is removed from categorical variables.
 
 ## Heatmap
 ![numerical_heatmap](https://github.com/user-attachments/assets/dd2fdb5e-443f-47d7-8f65-f738c01feec4)
@@ -34,7 +34,7 @@ These variables do not have normal distributions. Tenure and Monthly Charges are
 # Modeling
 XGBoost will be used as the model to predict customer churn. XGBoost is a tree type model that trains first using a base learning, then computes the errors. It will then train to reduce those errors and compute new errors, repeating the process until a stopping condition is met. XGBoost can be used for both classification and regression tasks. For this project, churn prediction is a classification task. 
 
-The evaluation metric best suited for the situation is 'aucpr,' the Area Under the PR Curve since the data is imbalanced and it's most important to correctly predict whether customers will churn. 
+The evaluation metric best suited for the situation is aucpr. This is the area under the Precision - Recall Curve and it is chosen since the data is imbalanced and correctly predicting whether customers will churn is top priority. 
 
 3 Models were developed using different techniques.
 
@@ -49,6 +49,7 @@ The Base Model has high precision, recall, and f1-score for customers who don't 
 
 ## Tuned Model
 - This model has hyperparameter tuning applied to the features in the base model.
+- Hyperparameters include learning rate, number of trees, max depth, subsample ratio, column sample by tree, minimum child weight, gamma (minimum loss reduction), alpha (L1 regularization weight), lambda (L2 regularization weight)
 - Hyperparameters were tuned using GridSearch, which tested different parameter combinations to identify the set of parameters with the best model performance.
 
 ![tuned_model_cm](https://github.com/user-attachments/assets/5d9a0afe-ecf4-4108-b74f-07b2d598b3db)
@@ -58,7 +59,7 @@ After tuning, the model more often correctly predicts whether customer will or w
 The Tuned Model has slightly increased metrics across the board, indicating better overall performance than the base model. However, it is still biased towards predicting that customers won't churn and recall for predictions of customers who will churn has not risen much.
 
 ![tuned_feature_importance](https://github.com/user-attachments/assets/1bbb6d04-8212-4447-909a-4a6eb08770ac)
-The most important features in the model are the contract type. The next most important features are Payment Method, Device Protection, Online Security, Tenure, and Monthly Charges.
+The most important features in the model are the contract type. Feature importance was computed using gain. The next most important features are Payment Method, Device Protection, Online Security, Tenure, and Monthly Charges.
 
 ## SMOTE Model
 - For this model, the training data was first balanced using Synthetic Minority Oversampling Technique (SMOTE), a method to balance data by generating some synthetic data for the minorities from existing data.
@@ -74,19 +75,20 @@ The recall for churning customers increased significantly. However this came at 
 ![smote_feature_importance](https://github.com/user-attachments/assets/78ba8269-1b74-4662-be38-4d859af6a409)
 Contract Type and Online Security are significantly more important to the SMOTE Model than other features.
 
-# Churn Distribution Plots
+# Churn Proportion Analysis
+Proportions of churned and retained customers are visualized across key features:
 
 ## Contract Type
 ![churn_by_contract](https://github.com/user-attachments/assets/eb0f5920-ebad-4a60-9272-42b218516766)
-The number of churners is negatively correlated with contract length. Significantly more people churned when they had Month to Month Contracts than when they had a 1 year or 2 year contract.
+Customers with month-to-month contracts have the highest churn rates, while those on 1-year and 2-year contracts are significantly less likely to churn. This suggests that contract length is negatively associated with churn, and long-term contracts may help retain customers.
 
 ## Internet Service
 ![churn_by_internet_service](https://github.com/user-attachments/assets/00294fd7-ec85-4175-8fe3-0dfbc756535d)
-There are higher proportions of customers who churn when they have internet service. Fiber Optic users also have a higher proportion of churners than DSL users. This could indicate problems with the Fiber Optic cable services offered by the company.
+Churn is also higher among customers who have internet service with the company. Churn rate is even higher for those who have fiber optic connections compared to DSL. This may reflect potential service quality or satisfaction issues with fiber optic offerings and even the internet service in general.
 
 ## Payment Methods 
 ![churn_by_payment_method](https://github.com/user-attachments/assets/29a2c1b6-c83f-4cff-b3db-14b33d5e1b4a)
-Customers who pay via electronic checks have higher proportions of churning customers than those who use other payment methods (and those other payment methods have roughly the same levels of churn). This could indicate problems with the electronic check payment method.
+Customers who pay via electronic checks have higher proportions of churning customers than those who use other payment methods (and those other payment methods have roughly the same levels of churn). This could indicate high frequencies of technical issues for customers pay using electronic checks, which leads to frustration and churn.
 
 ## Tenure
 ![churn_by_tenure](https://github.com/user-attachments/assets/c34ea95f-1528-410d-8fe5-e1deccaf4fdf)
@@ -94,10 +96,15 @@ Customers tend to churn the most within the first couple months of tenure. The f
 
 # Recommendations
 - For predicting customer churn, the SMOTE model should chosen despite having lower accuracy than the Base Model and Tuned Models. Because telecom data tends to be imbalanced with customer churn being the minority, models should be optimized for the highest recall, which the SMOTE Model has (around 50% improvement from the other 2 models).
-- Since customers tend to churn significantly more after their first month with the telecom company, the company should prioritize deals and promotions that lock the customer into a 1 year or 2 contract. The company can offer customers discounted or free phones or discounts through statement credits to win over new customers, while locking them into 1 or 2 year contracts
-- Given how less likely customers are to churn after a year or 2 of tenure, the company is recommended to be more generous with offers to lock in customers.
+- Since customers tend to churn significantly more after their first month with the telecom company, the company should prioritize deals and promotions that lock the customer into a 1 year or 2 contract.
+- The company can offer customers discounted or free phones or discounts through statement credits to win over new customers, while locking them into 1 or 2 year contracts.
+- Since churn rates drop substantially after the first year, the company may benefit from offering upfront incentives to encourage long-term commitments and reduce early-stage churn (which is where churn rate is the highest).
 
 # Clarifying Questions
-- Why do customers tend to churn more when they have internet services with the company? Are there issues with the company's internet services?
-- Why are customers who pay with electronics checks more likely to churn than customers who pay via other methods? Do customers tend to have more issues with payment using this method?
-- Why do customers tend to churn most often after the first 1 or 2 months with the company? Is the onboarding experience terrible for new customers?
+- Why do customers tend to churn more when they have internet services with the company?
+- Are there any issues with the company's internet services such as connection speed and stability?
+- Why are customers who pay with electronics checks more likely to churn than customers who pay via other methods?
+- Do customers tend to have more issues with payment using this method?
+- Why do customers tend to churn most often after the first 1 or 2 months with the company?
+- Is the onboarding experience lacking for new customers?
+- How does the company's pricing and service coverage compare to competitors?
