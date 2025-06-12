@@ -34,9 +34,9 @@ These variables do not have normal distributions. Tenure and Monthly Charges are
 # Modeling
 XGBoost will be used as the model to predict customer churn. XGBoost is a tree type model that trains first using a base learning, then computes the errors. It will then train to reduce those errors and compute new errors, repeating the process until a stopping condition is met. XGBoost can be used for both classification and regression tasks. For this project, churn prediction is a classification task. 
 
-The evaluation metric best suited for the situation is aucpr. This is the area under the Precision - Recall Curve and it is chosen since the data is imbalanced and correctly predicting whether customers will churn is top priority. 
+The evaluation metric best suited for the situation is aucpr. This is the area under the Precision-Recall Curve and it was selected since the data is imbalanced and correctly predicting whether customers will churn is top priority. 
 
-3 Models were developed using different techniques.
+3 Models were developed using different techniques:
 
 ## Base XGBoost Model
 - This is the Base Model that uses all independent features without tuning or balancing.
@@ -49,7 +49,7 @@ The Base Model has high precision, recall, and f1-score for customers who don't 
 
 ## Tuned Model
 - This model has hyperparameter tuning applied to the features in the base model.
-- Hyperparameters include learning rate, number of trees, max depth, subsample ratio, column sample by tree, minimum child weight, gamma (minimum loss reduction), alpha (L1 regularization weight), lambda (L2 regularization weight)
+- Hyperparameters include learning rate, number of trees, max depth, subsample ratio, column sample by tree, minimum child weight, gamma (minimum loss reduction), alpha (L1 regularization weight), lambda (L2 regularization weight), and negative & postive weights.
 - Hyperparameters were tuned using GridSearch, which tested different parameter combinations to identify the set of parameters with the best model performance.
 
 ![tuned_model_cm](https://github.com/user-attachments/assets/5d9a0afe-ecf4-4108-b74f-07b2d598b3db)
@@ -63,8 +63,8 @@ The most important features in the model are the contract type. Feature importan
 
 ## SMOTE Model
 - For this model, the training data was first balanced using Synthetic Minority Oversampling Technique (SMOTE), a method to balance data by generating some synthetic data for the minorities from existing data.
-- Hyperparameter tuning was then applied to this model.
-- scale_pos_weight was removed from hyperparameter tuning since this hyperparameter is used for imbalanced data and SMOTE was already applied to the training data.
+- Hyperparameter tuning was then applied to this model after data balancing to determine optimal parameters for the model.
+- The negative & postive weights parameter was removed from hyperparameter tuning since this is used for imbalanced data and SMOTE was already applied to the training data.
 
 ![smote_cm](https://github.com/user-attachments/assets/5bac422a-9399-47b0-b2f7-3c7750c043bd)
 The SMOTE Model has more correct predictions of when a customer will churn. It also makes fewer predictions of "Won't Churn" when a customer acutally churns. However, it makes fewer correct predictions of when a customer won't churn and makes many more mistakes where it predicts a customer will churn when they actually don't.
@@ -79,15 +79,18 @@ Contract Type and Online Security are significantly more important to the SMOTE 
 Proportions of churned and retained customers are visualized across key features:
 
 ## Contract Type
-![churn_by_contract](https://github.com/user-attachments/assets/eb0f5920-ebad-4a60-9272-42b218516766)
+![churn_by_contract](https://github.com/user-attachments/assets/7731f475-183a-4e91-9e0e-21b3be36ebe2)
 Customers with month-to-month contracts have the highest churn rates, while those on 1-year and 2-year contracts are significantly less likely to churn. This suggests that contract length is negatively associated with churn, and long-term contracts may help retain customers.
 
+![churn_contract_pie](https://github.com/user-attachments/assets/4ec9bc1a-c1aa-4f57-896b-20399ec3d5c4)
+Of all churning customers, around 90% are on month-to-month contracts. This drops to around 9% for customers on 1 year contracts. For the company, it is of the utmost importance to get customers on 1 or 2 year contracts, which will drastically reduce churn rate.
+
 ## Internet Service
-![churn_by_internet_service](https://github.com/user-attachments/assets/00294fd7-ec85-4175-8fe3-0dfbc756535d)
+![churn_by_internet_service](https://github.com/user-attachments/assets/72ac1b6a-1aa0-42df-8da1-ecc28158f810)
 Churn is also higher among customers who have internet service with the company. Churn rate is even higher for those who have fiber optic connections compared to DSL. This may reflect potential service quality or satisfaction issues with fiber optic offerings and even the internet service in general.
 
 ## Payment Methods 
-![churn_by_payment_method](https://github.com/user-attachments/assets/29a2c1b6-c83f-4cff-b3db-14b33d5e1b4a)
+![churn_by_payment_method](https://github.com/user-attachments/assets/ece176ff-cc52-4a1e-b5f2-52db3eb62343)
 Customers who pay via electronic checks have higher proportions of churning customers than those who use other payment methods (and those other payment methods have roughly the same levels of churn). This could indicate high frequencies of technical issues for customers pay using electronic checks, which leads to frustration and churn.
 
 ## Tenure
