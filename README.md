@@ -7,6 +7,7 @@ This is a project on that applies Extreme Gradient Boosting (XGBoost) to predict
 - More information about the data can be found here: https://community.ibm.com/community/user/blogs/steven-macko/2019/07/11/telco-customer-churn-1113
 
 # Exploratory Data Analysis
+## Data Cleaning
 - Missing values are imputed.
 - Duplicates and unreasonable values are checked for.
 - Data types are changed to appropriate formats for manipulation and modeling.
@@ -69,8 +70,8 @@ The most important features in the model are the contract type. Feature importan
 ![smote_cm](https://github.com/user-attachments/assets/5bac422a-9399-47b0-b2f7-3c7750c043bd)
 The SMOTE Model has more correct predictions of when a customer will churn. It also makes fewer predictions of "Won't Churn" when a customer acutally churns. However, it makes fewer correct predictions of when a customer won't churn and makes many more mistakes where it predicts a customer will churn when they actually don't.
 
-![smote_report](https://github.com/user-attachments/assets/e8eb2dfa-88a7-4876-bed0-641217bd6084)
-The recall for churning customers increased significantly. However this came at the tradeoff of lower precision and recall for non-churning customers and lower precision for churning customers. Overall accuracy was also lowered.
+![smote_report](https://github.com/user-attachments/assets/87553ef4-4b05-4b10-a5ef-4b93673af28a)
+The recall for churning customers increased significantly, up around 42% from the Tuned Model (from 0.54 to 0.77). However this came at the tradeoff of lower precision and recall for non-churning customers and lower precision for churning customers. Overall accuracy was also lowered by 0.05.
 
 ![smote_feature_importance](https://github.com/user-attachments/assets/78ba8269-1b74-4662-be38-4d859af6a409)
 Contract Type and Online Security are significantly more important to the SMOTE Model than other features.
@@ -98,7 +99,7 @@ Customers who pay via electronic checks have higher proportions of churning cust
 Customers tend to churn the most within the first couple months of tenure. The first month is the most important with customers churning more in that particular month than in any other month.
 
 # Recommendations
-- For predicting customer churn, the SMOTE model should chosen despite having lower accuracy than the Base Model and Tuned Models. Because telecom data tends to be imbalanced with customer churn being the minority, models should be optimized for the highest recall, which the SMOTE Model has (around 50% improvement from the other 2 models).
+- For predicting customer churn, the SMOTE model should chosen despite having lower accuracy than the Base Model and Tuned Models. Because telecom data tends to be imbalanced with customer churn being the minority, models should be optimized for the highest recall, which the SMOTE Model has (up to 42% improvement from the Tuned Model).
 - Since customers tend to churn significantly more after their first month with the telecom company, the company should prioritize deals and promotions that lock the customer into a 1 year or 2 contract.
 - The company can offer customers discounted or free phones or discounts through statement credits to win over new customers, while locking them into 1 or 2 year contracts.
 - Since churn rates drop substantially after the first year, the company may benefit from offering upfront incentives to encourage long-term commitments and reduce early-stage churn (which is where churn rate is the highest).
