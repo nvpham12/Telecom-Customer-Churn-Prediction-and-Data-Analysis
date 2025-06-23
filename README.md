@@ -8,7 +8,7 @@ This is a project on that applies Extreme Gradient Boosting (XGBoost) to predict
 
 # Exploratory Data Analysis
 ## Data Cleaning
-- Missing values are imputed.
+- Missing values are imputed. These were missing values for monthly charges for new customers (on their first month). Therefore, this will not cause data leakage when done before splitting the data later.
 - Duplicates and unreasonable values are checked for.
 - Data types are changed to appropriate formats for manipulation and modeling.
 - Extra whitespace is removed from categorical variables.
