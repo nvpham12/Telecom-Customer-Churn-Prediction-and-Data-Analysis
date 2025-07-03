@@ -3,7 +3,7 @@ This is a project on that applies Extreme Gradient Boosting (XGBoost) to build a
 
 # Data
 - The data is sourced from IBM's Base Samples. It contains synthetic information on telecom customers such as Contract Type, Monthly Charges, Tenure, and whether they churned.
-- [A copy of the dataset can be downloaded from here.](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
+- The dataset was obtained from [here](https://www.kaggle.com/datasets/blastchar/telco-customer-churn).
 - Feature Definitions:
   - CustomerID: A unique ID that identifies each customer.
   - Senior Citizen: Indicates if the customer is 65 or older: Yes, No
@@ -46,7 +46,7 @@ Most of the variables are imbalanced. While this is normal in the telecom indust
 These variables do not have normal distributions. Tenure and Monthly Charges are multimodal, while Total Charges is right skewed. These features will require a transformation to deal with the skew before modeling.
 
 ## Tableau Dashboard
-- [View the dashboard here.](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17515012306460/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+- View the dashboard [here](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17515012306460/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link).
 - The visualizations focus on two informative continuous variables — Monthly Charges and Tenure — which show clear churn-related trends.
 - Filters for categorical features allow dynamic segmentation to explore how churn patterns shift across different customer groups.
 
