@@ -48,7 +48,7 @@ These variables do not have normal distributions. Tenure and Monthly Charges are
 
 ## Tableau Dashboard
 - View the dashboard here: https://public.tableau.com/views/TelecomCustomerChurnDashboard_17515012306460/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
-- The visualizations focus on the two most informative continuous variables — Monthly Charges and Tenure — which show clear churn-related trends.
+- The visualizations focus on two informative continuous variables — Monthly Charges and Tenure — which show clear churn-related trends.
 - Filters for categorical features allow dynamic segmentation to explore how churn patterns shift across different customer groups.
 
 # Data Preprocessing
