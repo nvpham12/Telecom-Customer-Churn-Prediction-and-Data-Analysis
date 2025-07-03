@@ -3,7 +3,7 @@ This is a project on that applies Extreme Gradient Boosting (XGBoost) to build a
 
 # Data
 - The data is sourced from IBM's Base Samples. It contains synthetic information on telecom customers such as Contract Type, Monthly Charges, Tenure, and whether they churned.
-- A copy of the dataset can be downloaded from: https://www.kaggle.com/datasets/blastchar/telco-customer-churn
+- [A copy of the dataset can be downloaded from here.](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
 - Feature Definitions:
   - CustomerID: A unique ID that identifies each customer.
   - Senior Citizen: Indicates if the customer is 65 or older: Yes, No
@@ -31,7 +31,6 @@ This is a project on that applies Extreme Gradient Boosting (XGBoost) to build a
 - Duplicates and unreasonable values are checked for.
 - Data types are changed to appropriate formats for manipulation and modeling.
 - Extra whitespace is removed from categorical variables.
-- A Tableau dashboard was built. It can be viewed at https://public.tableau.com/app/profile/nick6178/vizzes
 
 ## Heatmap
 ![numerical_heatmap](https://github.com/user-attachments/assets/dd2fdb5e-443f-47d7-8f65-f738c01feec4)
