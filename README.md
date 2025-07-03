@@ -1,5 +1,5 @@
 # Project Overview
-This is a project on that applies Extreme Gradient Boosting (XGBoost) to build a model that predicts whether a telecom customer will cancel their plan or subscription (churn). A Tableau Dashboard was created for interactive exploration. Seeds are set for reproducibility. For more technical details, refer to the Jupyter Notebook file.
+This is a project using Extreme Gradient Boosting (XGBoost) to build a model that predicts whether telecom customers will churn. A Tableau Dashboard was made for interactive exploration. Seeds are set for reproducibility and colorblind pallettes are used for accessibility. For more technical details, refer to the Jupyter Notebook file.
 
 # Data
 - The data is sourced from IBM's Base Samples. It contains synthetic information on telecom customers such as Contract Type, Monthly Charges, Tenure, and whether they churned.
@@ -139,8 +139,8 @@ Customers who pay via electronic checks have higher proportions of churning cust
 Customers tend to churn the most within the first couple months of tenure. The first month is the most important with customers churning more in that particular month than in any other month.
 
 # Recommendations
-- For predicting customer churn, the SMOTE model should chosen despite having lower accuracy than the Base Model and Tuned Models. Because telecom data tends to be imbalanced with customer churn being the minority, models should be optimized for the highest recall, which the SMOTE Model has (up to 42% improvement from the Tuned Model).
-- Since customers tend to churn significantly more after their first month with the telecom company, the company should prioritize deals and promotions that lock the customer into a 1 year or 2 contract.
+- For predicting customer churn, the SMOTE model would be preferred despite having lower accuracy than the Base Model and Tuned Models. Since telecom data tends to be imbalanced with customer churn being the minority, models should be optimized for the highest recall, which the SMOTE Model has (up to 42% improvement from the Tuned Model).
+- Because customers tend to churn significantly more after their first month with the telecom company, the company should prioritize deals and promotions that lock the customer into a 1 year or 2 contract.
 - The company can offer customers discounted or free phones or discounts through statement credits to win over new customers, while locking them into 1 or 2 year contracts.
 - Since churn rates drop substantially after the first year, the company may benefit from offering upfront incentives to encourage long-term commitments and reduce early-stage churn (which is where churn rate is the highest).
 
