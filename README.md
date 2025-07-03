@@ -1,10 +1,29 @@
 # Project Overview
-This is a project on that applies Extreme Gradient Boosting (XGBoost) to predict whether a telecom customer will cancel their plan or subscription (churn). Seeds are set for reproducibility. For more technical details, refer to the Jupyter Notebook file.
+This is a project on that applies Extreme Gradient Boosting (XGBoost) to build a model that predicts whether a telecom customer will cancel their plan or subscription (churn). A Tableau Dashboard was created for interactive exploration. Seeds are set for reproducibility. For more technical details, refer to the Jupyter Notebook file.
 
 # Data
 - The data is sourced from IBM's Base Samples. It contains synthetic information on telecom customers such as Contract Type, Monthly Charges, Tenure, and whether they churned.
 - A copy of the dataset can be downloaded from: https://www.kaggle.com/datasets/blastchar/telco-customer-churn
-- More information about the data can be found here: https://community.ibm.com/community/user/blogs/steven-macko/2019/07/11/telco-customer-churn-1113
+- Feature Definitions:
+  - CustomerID: A unique ID that identifies each customer.
+  - Senior Citizen: Indicates if the customer is 65 or older: Yes, No
+  - Dependents: Indicates if the customer lives with any dependents: Yes, No. Dependents could be children, parents, grandparents, etc.
+  - Tenure: Indicates the total amount of months that the customer has been with the company by the end of the quarter specified above.
+  - Phone Service: Indicates if the customer subscribes to home phone service with the company: Yes, No
+  - Multiple Lines: Indicates if the customer subscribes to multiple telephone lines with the company: Yes, No
+  - Internet Service: Indicates if the customer subscribes to Internet service with the company: No, DSL, Fiber Optic, Cable.
+  - Online Security: Indicates if the customer subscribes to an additional online security service provided by the company: Yes, No
+  - Online Backup: Indicates if the customer subscribes to an additional online backup service provided by the company: Yes, No
+  - Device Protection: Indicates if the customer subscribes to an additional device protection plan for their Internet equipment provided by the company: Yes, No
+  - Tech Support: Indicates if the customer subscribes to an additional technical support plan from the company with reduced wait times: Yes, No
+  - Streaming TV: Indicates if the customer uses their Internet service to stream television programing from a third party provider: Yes, No. The company does not charge an additional fee for this service.
+  - Streaming Movies: Indicates if the customer uses their Internet service to stream movies from a third party provider: Yes, No. The company does not charge an additional fee for this service.
+  - Contract: Indicates the customer’s current contract type: Month-to-Month, One Year, Two Year.
+  - Paperless Billing: Indicates if the customer has chosen paperless billing: Yes, No
+  - Payment Method: Indicates how the customer pays their bill: Bank Withdrawal, Credit Card, Mailed Check
+  - Monthly Charge: Indicates the customer’s current total monthly charge for all their services from the company.
+  - Total Charges: Indicates the customer’s total charges, calculated to the end of the quarter specified above.
+  - Churn: Yes = the customer left the company. No = the customer remained with the company.
 
 # Exploratory Data Analysis
 ## Data Cleaning
@@ -12,6 +31,7 @@ This is a project on that applies Extreme Gradient Boosting (XGBoost) to predict
 - Duplicates and unreasonable values are checked for.
 - Data types are changed to appropriate formats for manipulation and modeling.
 - Extra whitespace is removed from categorical variables.
+- A Tableau dashboard was built. It can be viewed at https://public.tableau.com/app/profile/nick6178/vizzes
 
 ## Heatmap
 ![numerical_heatmap](https://github.com/user-attachments/assets/dd2fdb5e-443f-47d7-8f65-f738c01feec4)
@@ -25,6 +45,11 @@ Most of the variables are imbalanced. While this is normal in the telecom indust
 ## Numerical Variable Distributions
 ![numerical_distributions](https://github.com/user-attachments/assets/d35d5498-efed-433f-b363-c9045a652444)
 These variables do not have normal distributions. Tenure and Monthly Charges are multimodal, while Total Charges is right skewed. These features will require a transformation to deal with the skew before modeling.
+
+## Tableau Dashboard
+- View the dashboard here: https://public.tableau.com/views/TelecomCustomerChurnDashboard_17515012306460/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
+- The visualizations focus on the two most informative continuous variables — Monthly Charges and Tenure — which show clear churn-related trends.
+- Filters for categorical features allow dynamic segmentation to explore how churn patterns shift across different customer groups.
 
 # Data Preprocessing
 - Total Charges is removed due to high correlation with other features.
