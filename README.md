@@ -47,7 +47,7 @@ Most of the variables are imbalanced. While this is normal in the telecom indust
 These variables do not have normal distributions. Tenure and Monthly Charges are multimodal, while Total Charges is right skewed. These features will require a transformation to deal with the skew before modeling.
 
 ## Tableau Dashboard
-- View the dashboard here: https://public.tableau.com/views/TelecomCustomerChurnDashboard_17515012306460/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
+- [View the dashboard here.](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17515012306460/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 - The visualizations focus on two informative continuous variables — Monthly Charges and Tenure — which show clear churn-related trends.
 - Filters for categorical features allow dynamic segmentation to explore how churn patterns shift across different customer groups.
 
