@@ -34,15 +34,18 @@ This is a project on that applies Extreme Gradient Boosting (XGBoost) to build a
 
 ## Heatmap
 ![numerical_heatmap](https://github.com/user-attachments/assets/dd2fdb5e-443f-47d7-8f65-f738c01feec4)
+
 Tenure has high 0.83 correlation with Total Charges, which is reasonable considering the longer a customer stays with the company, the larger the accumulation of their charges.
 Monthly Charges has a moderate 0.65 correlation with Total Charges. This likely means that customers have a tendency to change their plans, and by extension, their Monthly Charges rather than sticking to the same plan.
 
 ## Categorical Variable Counts
 ![categorical_var_counts](https://github.com/user-attachments/assets/b4e15e8a-ac3d-4863-b858-d41b8f8d7aa9)
+
 Most of the variables are imbalanced. While this is normal in the telecom industry, since most customers won't churn, this may cause some issues with model performance and results. We'll later model the data with and without balancing the data.
 
 ## Numerical Variable Distributions
 ![numerical_distributions](https://github.com/user-attachments/assets/d35d5498-efed-433f-b363-c9045a652444)
+
 These variables do not have normal distributions. Tenure and Monthly Charges are multimodal, while Total Charges is right skewed. These features will require a transformation to deal with the skew before modeling.
 
 ## Tableau Dashboard
@@ -67,9 +70,11 @@ The evaluation metric best suited for the situation is aucpr. This is the area u
 - This is the Base Model that uses all independent features without tuning or balancing.
 
 ![base_model_cm](https://github.com/user-attachments/assets/9a5a4bea-41ad-4030-808a-b13b6521e31f)
+
 The Base Model correctly predicts whether a customer will churn with the accuracy of a coin toss. Because the data is imbalanced (most customers don't actually churn), the model heavily favors predicting "won't churn."
 
 ![base_model_report](https://github.com/user-attachments/assets/f842d79c-d610-4958-91f5-a5d68b219aa5)
+
 The Base Model has high precision, recall, and f1-score for customers who don't churn. However theose metrics fall significantly when it comes to customers who do churn. For churn prediction tasks, the most important metric is recall of churned customers. The accuracy is good, but most of this accuracy comes from predicting that customers won't churn.
 
 ## Tuned Model
@@ -78,12 +83,15 @@ The Base Model has high precision, recall, and f1-score for customers who don't 
 - Hyperparameters were tuned using GridSearch, which tested different parameter combinations to identify the set of parameters with the best model performance.
 
 ![tuned_model_cm](https://github.com/user-attachments/assets/5d9a0afe-ecf4-4108-b74f-07b2d598b3db)
+
 After tuning, the model more often correctly predicts whether customer will or will not churn and makes fewer incorrect predictions indicating better overall accuracy and performance than the Base Model.
 
 ![tuned_model_report](https://github.com/user-attachments/assets/021383bd-3010-47c0-a4d0-2543d03b6f25)
+
 The Tuned Model has slightly increased metrics across the board, indicating better overall performance than the base model. However, it is still biased towards predicting that customers won't churn and recall for predictions of customers who will churn has not risen much.
 
 ![tuned_feature_importance](https://github.com/user-attachments/assets/1bbb6d04-8212-4447-909a-4a6eb08770ac)
+
 The most important features in the model are the contract type. Feature importance was computed using gain. The next most important features are Payment Method, Device Protection, Online Security, Tenure, and Monthly Charges.
 
 ## SMOTE Model
@@ -92,12 +100,15 @@ The most important features in the model are the contract type. Feature importan
 - The negative & postive weights parameter was removed from hyperparameter tuning since this is used for imbalanced data and SMOTE was already applied to the training data.
 
 ![smote_cm](https://github.com/user-attachments/assets/5bac422a-9399-47b0-b2f7-3c7750c043bd)
+
 The SMOTE Model has more correct predictions of when a customer will churn. It also makes fewer predictions of "Won't Churn" when a customer acutally churns. However, it makes fewer correct predictions of when a customer won't churn and makes many more mistakes where it predicts a customer will churn when they actually don't.
 
 ![smote_report](https://github.com/user-attachments/assets/87553ef4-4b05-4b10-a5ef-4b93673af28a)
+
 The recall for churning customers increased significantly, up around 42% from the Tuned Model (from 0.54 to 0.77). However this came at the tradeoff of lower precision and recall for non-churning customers and lower precision for churning customers. Overall accuracy was also lowered by 0.05.
 
 ![smote_feature_importance](https://github.com/user-attachments/assets/78ba8269-1b74-4662-be38-4d859af6a409)
+
 Contract Type and Online Security are significantly more important to the SMOTE Model than other features.
 
 # Churn Proportion Analysis
@@ -105,21 +116,26 @@ Proportions of churned and retained customers are visualized across key features
 
 ## Contract Type
 ![churn_by_contract](https://github.com/user-attachments/assets/7731f475-183a-4e91-9e0e-21b3be36ebe2)
+
 Customers with month-to-month contracts have the highest churn rates, while those on 1-year and 2-year contracts are significantly less likely to churn. This suggests that contract length is negatively associated with churn, and long-term contracts may help retain customers.
 
 ![churn_contract_pie](https://github.com/user-attachments/assets/4ec9bc1a-c1aa-4f57-896b-20399ec3d5c4)
+
 Of all churning customers, around 90% are on month-to-month contracts. This drops to around 9% for customers on 1 year contracts. For the company, it is of the utmost importance to get customers on 1 or 2 year contracts, which will drastically reduce churn rate.
 
 ## Internet Service
 ![churn_by_internet_service](https://github.com/user-attachments/assets/72ac1b6a-1aa0-42df-8da1-ecc28158f810)
+
 Churn is also higher among customers who have internet service with the company. Churn rate is even higher for those who have fiber optic connections compared to DSL. This may reflect potential service quality or satisfaction issues with fiber optic offerings and even the internet service in general.
 
 ## Payment Methods 
 ![churn_by_payment_method](https://github.com/user-attachments/assets/ece176ff-cc52-4a1e-b5f2-52db3eb62343)
+
 Customers who pay via electronic checks have higher proportions of churning customers than those who use other payment methods (and those other payment methods have roughly the same levels of churn). This could indicate high frequencies of technical issues for customers pay using electronic checks, which leads to frustration and churn.
 
 ## Tenure
 ![churn_by_tenure](https://github.com/user-attachments/assets/c34ea95f-1528-410d-8fe5-e1deccaf4fdf)
+
 Customers tend to churn the most within the first couple months of tenure. The first month is the most important with customers churning more in that particular month than in any other month.
 
 # Recommendations
