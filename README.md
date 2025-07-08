@@ -1,29 +1,42 @@
 # Project Overview
-This is a project using Extreme Gradient Boosting (XGBoost) to build a model that predicts whether telecom customers will churn. A Tableau Dashboard was made for interactive exploration. Seeds are set for reproducibility and colorblind pallettes are used for accessibility. For more technical details, refer to the Jupyter Notebook file.
+This project demonstrates predicting customer churn using synthetic telecom data with the XGBoost algorithm. The aim is to showcase techniques for identifying customers at risk of leaving through thorough exploratory analysis, model tuning, class balancing, and interactive visualization with Tableau. All steps use reproducible workflows and accessible via colorblind friendly visual design.
+
+For technical details, see the Jupyter Notebook.  
+View the interactive dashboard [here](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17515012306460/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link).
+
+# Tools & Technologies
+- **Pandas** – data manipulation and cleaning
+- **NumPy** - data transformation
+- **Matplotlib / Seaborn** – EDA and visualizations
+- **Scikit-learn** – data preprocessing and model evaluation
+- **XGBoost** – tree-based classification and feature importance visualization
+- **GridSearchCV** – hyperparameter tuning
+- **Imbalanced-learn (imblearn)** - data balancing via SMOTE
+- **Tableau** – interactive dashboarding
 
 # Data
 - The data is sourced from IBM's Base Samples. It contains synthetic information on telecom customers such as Contract Type, Monthly Charges, Tenure, and whether they churned.
 - The dataset was obtained from [here](https://www.kaggle.com/datasets/blastchar/telco-customer-churn).
 - Feature Definitions:
   - CustomerID: A unique ID that identifies each customer.
-  - Senior Citizen: Indicates if the customer is 65 or older: Yes, No
-  - Dependents: Indicates if the customer lives with any dependents: Yes, No. Dependents could be children, parents, grandparents, etc.
-  - Tenure: Indicates the total amount of months that the customer has been with the company by the end of the quarter specified above.
-  - Phone Service: Indicates if the customer subscribes to home phone service with the company: Yes, No
-  - Multiple Lines: Indicates if the customer subscribes to multiple telephone lines with the company: Yes, No
-  - Internet Service: Indicates if the customer subscribes to Internet service with the company: No, DSL, Fiber Optic, Cable.
-  - Online Security: Indicates if the customer subscribes to an additional online security service provided by the company: Yes, No
-  - Online Backup: Indicates if the customer subscribes to an additional online backup service provided by the company: Yes, No
-  - Device Protection: Indicates if the customer subscribes to an additional device protection plan for their Internet equipment provided by the company: Yes, No
-  - Tech Support: Indicates if the customer subscribes to an additional technical support plan from the company with reduced wait times: Yes, No
-  - Streaming TV: Indicates if the customer uses their Internet service to stream television programing from a third party provider: Yes, No. The company does not charge an additional fee for this service.
-  - Streaming Movies: Indicates if the customer uses their Internet service to stream movies from a third party provider: Yes, No. The company does not charge an additional fee for this service.
-  - Contract: Indicates the customer’s current contract type: Month-to-Month, One Year, Two Year.
-  - Paperless Billing: Indicates if the customer has chosen paperless billing: Yes, No
-  - Payment Method: Indicates how the customer pays their bill: Bank Withdrawal, Credit Card, Mailed Check
+  - Senior Citizen: Indicates if the customer is 65 or older: (Yes/No)
+  - Dependents: Indicates if the customer lives with any dependents: (Yes/No)
+  - Tenure: Indicates the number of months that the customer has been with the company.
+  - Phone Service: Indicates if the customer subscribes to home phone service with the company: (Yes/No)
+  - Multiple Lines: Indicates if the customer subscribes to multiple telephone lines with the company: (Yes/No)
+  - Internet Service: Indicates if the customer subscribes to Internet service with the company: (No/DSL/Fiber Optic/Cable)
+  - Online Security: Indicates if the customer subscribes to an additional online security service provided by the company: (Yes/No)
+  - Online Backup: Indicates if the customer subscribes to an additional online backup service provided by the company: (Yes/No)
+  - Device Protection: Indicates if the customer subscribes to an additional device protection plan for their Internet equipment provided by the company: (Yes/No)
+  - Tech Support: Indicates if the customer subscribes to an additional technical support plan from the company with reduced wait times: (Yes/No)
+  - Streaming TV: Indicates if the customer uses their Internet service to stream television programing from a third party provider: (Yes/No)
+  - Streaming Movies: Indicates if the customer uses their Internet service to stream movies from a third party provider: (Yes/No)
+  - Contract: Indicates the customer’s current contract type: (Month-to-Month/One Year/Two Year)
+  - Paperless Billing: Indicates if the customer has chosen paperless billing: (Yes/No)
+  - Payment Method: Indicates how the customer pays their bill: (Bank Transfer/Credit Card/Electronic Check/Mailed Check)
   - Monthly Charge: Indicates the customer’s current total monthly charge for all their services from the company.
-  - Total Charges: Indicates the customer’s total charges, calculated to the end of the quarter specified above.
-  - Churn: Yes = the customer left the company. No = the customer remained with the company.
+  - Total Charges: Indicates the customer’s total charges.
+  - Churn: (Yes/No)
 
 # Exploratory Data Analysis
 ## Data Cleaning
@@ -60,7 +73,7 @@ These variables do not have normal distributions. Tenure and Monthly Charges are
 - Categorical Variables are encoded using binary encoding and dummy variable encoding. The first column is dropped when dummy variable encoding to avoid the dummy variable trap, an issue that arises where the dummy variables are highly correlated to each other.
   
 # Modeling
-XGBoost will be used as the model to predict customer churn. XGBoost is a tree type model that trains first using a base learning, then computes the errors. It will then train to reduce those errors and compute new errors, repeating the process until a stopping condition is met. XGBoost can be used for both classification and regression tasks. For this project, churn prediction is a classification task. 
+XGBoost will be used as the model to predict customer churn. XGBoost is a gradient-boosted tree algorithm that iteratively trains weak learners to correct previous errors. It supports classification and regression tasks; here it is applied for churn classification.
 
 The evaluation metric best suited for the situation is aucpr. This is the area under the Precision-Recall Curve and it was selected since the data is imbalanced and correctly predicting whether customers will churn is top priority. 
 
@@ -75,7 +88,7 @@ The Base Model correctly predicts whether a customer will churn with the accurac
 
 ![base_model_report](https://github.com/user-attachments/assets/f842d79c-d610-4958-91f5-a5d68b219aa5)
 
-The Base Model has high precision, recall, and f1-score for customers who don't churn. However theose metrics fall significantly when it comes to customers who do churn. For churn prediction tasks, the most important metric is recall of churned customers. The accuracy is good, but most of this accuracy comes from predicting that customers won't churn.
+The Base Model has high precision, recall, and f1-score for customers who don't churn. However those metrics fall significantly when it comes to customers who do churn. For churn prediction tasks, the most important metric is recall of churned customers. The accuracy is good, but most of this accuracy comes from predicting that customers won't churn.
 
 ## Tuned Model
 - This model has hyperparameter tuning applied to the features in the base model.
@@ -101,7 +114,7 @@ The most important features in the model are the contract type. Feature importan
 
 ![smote_cm](https://github.com/user-attachments/assets/5bac422a-9399-47b0-b2f7-3c7750c043bd)
 
-The SMOTE Model has more correct predictions of when a customer will churn. It also makes fewer predictions of "Won't Churn" when a customer acutally churns. However, it makes fewer correct predictions of when a customer won't churn and makes many more mistakes where it predicts a customer will churn when they actually don't.
+The SMOTE Model has more correct predictions of when a customer will churn. It also makes fewer predictions of "Won't Churn" when a customer acutally churns. However, it makes fewer correct predictions of when a customer won't churn and makes many more mistakes where it predicts a customer will churn when they actually remain.
 
 ![smote_report](https://github.com/user-attachments/assets/87553ef4-4b05-4b10-a5ef-4b93673af28a)
 
@@ -110,6 +123,13 @@ The recall for churning customers increased significantly, up around 42% from th
 ![smote_feature_importance](https://github.com/user-attachments/assets/78ba8269-1b74-4662-be38-4d859af6a409)
 
 Contract Type and Online Security are significantly more important to the SMOTE Model than other features.
+
+## Model Comparison Summary Table
+| Model       | Accuracy | Churn Recall | Non-Churn Recall | Notes |
+|-------------|----------|--------------|------------------|-------|
+| Base        | High     | Low (0.32)   | High             | Strong bias toward "no churn" |
+| Tuned       | Higher   | Slightly improved | Strong        | Overall improvement from Base Model |
+| SMOTE       | Lower    | High (0.77)  | Moderate         | Best for recall, most useful for churn prediction |
 
 # Churn Proportion Analysis
 Proportions of churned and retained customers are visualized across key features:
@@ -144,11 +164,18 @@ Customers tend to churn the most within the first couple months of tenure. The f
 - The company can offer customers discounted or free phones or discounts through statement credits to win over new customers, while locking them into 1 or 2 year contracts.
 - Since churn rates drop substantially after the first year, the company may benefit from offering upfront incentives to encourage long-term commitments and reduce early-stage churn (which is where churn rate is the highest).
 
+# Insights
+- Customers with month-to-month contracts are ~9× more likely to churn than those on annual contracts.
+- Internet service and payments via electronic checks show elevated churn risk.
+- Most churn occurs within the first 4 months of a customer's tenure, with the first month having the highest churn risk.
+
 # Clarifying Questions
-- Why do customers tend to churn more when they have internet services with the company?
-- Are there any issues with the company's internet services such as connection speed and stability?
-- Why are customers who pay with electronics checks more likely to churn than customers who pay via other methods?
-- Do customers tend to have more issues with payment using this method?
-- Why do customers tend to churn most often after the first 1 or 2 months with the company?
-- Is the onboarding experience lacking for new customers?
-- How does the company's pricing and service coverage compare to competitors?
+- Why are customers with internet service more likely to churn?
+- Are there pain points in the onboarding process?
+- Do electronic check users face billing friction or service issues?
+
+# Next Steps
+- Investigate whether onboarding experience is correlated with early churn.
+- Explore alternative classification algorithms such as Random Forest or Logistic Regression.
+- Test different resampling strategies beyond SMOTE (e.g., ADASYN or Tomek Links).
+- Add additional features such as quarters, geographic information, and download rates.
