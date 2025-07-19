@@ -15,8 +15,8 @@ View the interactive dashboard [here](https://public.tableau.com/views/TelecomCu
 - **Tableau** – interactive dashboarding
 
 # Data
-- The data is sourced from IBM's Base Samples. It contains synthetic information on telecom customers such as Contract Type, Monthly Charges, Tenure, and whether they churned.
-- The dataset was obtained from [here](https://www.kaggle.com/datasets/blastchar/telco-customer-churn).
+- The data is sourced from IBM's Base Samples under Apache 2.0 License. It contains synthetic information on telecom customers such as Contract Type, Monthly Charges, Tenure, and whether they churned.
+- The dataset was obtained from Kaggle [here](https://www.kaggle.com/datasets/blastchar/telco-customer-churn).
 - Feature Definitions:
   - CustomerID: A unique ID that identifies each customer.
   - Senior Citizen: Indicates if the customer is 65 or older: (Yes/No)
