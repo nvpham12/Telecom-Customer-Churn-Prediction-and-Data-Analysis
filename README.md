@@ -14,9 +14,12 @@ View the interactive dashboard [here](https://public.tableau.com/views/TelecomCu
 - **Imbalanced-learn (imblearn)** - data balancing via SMOTE
 - **Tableau** – interactive dashboarding
 
-# Data
-- The data is sourced from IBM's Base Samples under Apache 2.0 License. It contains synthetic information on telecom customers such as Contract Type, Monthly Charges, Tenure, and whether they churned.
-- The dataset was obtained from Kaggle [here](https://www.kaggle.com/datasets/blastchar/telco-customer-churn).
+# Data Source and License
+- Dataset: Telco Customer Churn
+- Authors: [scottdangelo](https://github.com/IBM/telco-customer-churn-on-icp4d)
+- Source: IBM
+- License: Apache License 2.0
+- Reference: IBM. (2019). Telco Customer Churn for Watson Studio.
 
 # Data Cleaning
 - There were missing values for monthly charges for new customers, which were imputed using their total charges.
