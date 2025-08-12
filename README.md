@@ -16,8 +16,8 @@ View the Tableau dashboard [here](https://public.tableau.com/views/TelecomCustom
 
 # Data Source and License
 - Dataset: Telco Customer Churn
-- Authors: [scottdangelo](https://github.com/IBM/telco-customer-churn-on-icp4d)
-- Source: IBM
+- Authors: scottdangelo
+- Source: [IBM](https://github.com/IBM/telco-customer-churn-on-icp4d)
 - License: Apache License 2.0
 - Reference: IBM. (2019). Telco Customer Churn for Watson Studio.
 
