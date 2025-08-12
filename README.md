@@ -17,34 +17,13 @@ View the interactive dashboard [here](https://public.tableau.com/views/TelecomCu
 # Data
 - The data is sourced from IBM's Base Samples under Apache 2.0 License. It contains synthetic information on telecom customers such as Contract Type, Monthly Charges, Tenure, and whether they churned.
 - The dataset was obtained from Kaggle [here](https://www.kaggle.com/datasets/blastchar/telco-customer-churn).
-- Feature Definitions:
-  - CustomerID: A unique ID that identifies each customer.
-  - Senior Citizen: Indicates if the customer is 65 or older: (Yes/No)
-  - Dependents: Indicates if the customer lives with any dependents: (Yes/No)
-  - Tenure: Indicates the number of months that the customer has been with the company.
-  - Phone Service: Indicates if the customer subscribes to home phone service with the company: (Yes/No)
-  - Multiple Lines: Indicates if the customer subscribes to multiple telephone lines with the company: (Yes/No)
-  - Internet Service: Indicates if the customer subscribes to Internet service with the company: (No/DSL/Fiber Optic/Cable)
-  - Online Security: Indicates if the customer subscribes to an additional online security service provided by the company: (Yes/No)
-  - Online Backup: Indicates if the customer subscribes to an additional online backup service provided by the company: (Yes/No)
-  - Device Protection: Indicates if the customer subscribes to an additional device protection plan for their Internet equipment provided by the company: (Yes/No)
-  - Tech Support: Indicates if the customer subscribes to an additional technical support plan from the company with reduced wait times: (Yes/No)
-  - Streaming TV: Indicates if the customer uses their Internet service to stream television programing from a third party provider: (Yes/No)
-  - Streaming Movies: Indicates if the customer uses their Internet service to stream movies from a third party provider: (Yes/No)
-  - Contract: Indicates the customer’s current contract type: (Month-to-Month/One Year/Two Year)
-  - Paperless Billing: Indicates if the customer has chosen paperless billing: (Yes/No)
-  - Payment Method: Indicates how the customer pays their bill: (Bank Transfer/Credit Card/Electronic Check/Mailed Check)
-  - Monthly Charge: Indicates the customer’s current total monthly charge for all their services from the company.
-  - Total Charges: Indicates the customer’s total charges.
-  - Churn: (Yes/No)
 
-# Exploratory Data Analysis
-## Data Cleaning
-- Missing values are imputed. These were missing values for monthly charges for new customers (on their first month) and were imputed using their total charges. Therefore, this will not cause data leakage when done before splitting the data later.
-- Duplicates and unreasonable values are checked for.
+# Data Cleaning
+- There were missing values for monthly charges for new customers, which were imputed using their total charges.
 - Data types are changed to appropriate formats for manipulation and modeling.
 - Extra whitespace is removed from categorical variables.
 
+# Exploratory Data Analysis
 ## Heatmap
 ![numerical_heatmap](https://github.com/user-attachments/assets/dd2fdb5e-443f-47d7-8f65-f738c01feec4)
 
@@ -66,70 +45,57 @@ These variables do not have normal distributions. Tenure and Monthly Charges are
 - The visualizations focus on two informative continuous variables — Monthly Charges and Tenure — which show clear churn-related trends.
 - Filters for categorical features allow dynamic segmentation to explore how churn patterns shift across different customer groups.
 
+## Dashboard Preview
+<img width="1799" height="1199" alt="telco-dashboard" src="https://github.com/user-attachments/assets/56a58c43-f4f8-43d1-a15e-56a0ec7358c3" />
+
 # Data Preprocessing
 - Total Charges is removed due to high correlation with other features.
 - Some redundant features are removed because they depend on other features. For example, Multiple Lines can take on the value of 'No Service,' which implies the value for the Phone Service feature.
 - Yeo-Johnson Transformation is applied to numerical features to handle skewed features.
 - Categorical Variables are encoded using binary encoding and dummy variable encoding. The first column is dropped when dummy variable encoding to avoid the dummy variable trap, an issue that arises where the dummy variables are highly correlated to each other.
   
-# Modeling
+# Churn Prediction Models
 XGBoost will be used as the model to predict customer churn. XGBoost is a gradient-boosted tree algorithm that iteratively trains weak learners to correct previous errors. It supports classification and regression tasks; here it is applied for churn classification.
 
-The evaluation metric best suited for the situation is aucpr. This is the area under the Precision-Recall Curve and it was selected since the data is imbalanced and correctly predicting whether customers will churn is top priority. 
+The evaluation metric best suited for the situation is aucpr. This is the Area Under the Precision-Recall Curve and it was selected since the data is imbalanced and correctly predicting whether customers will churn is top priority. 
 
 3 Models were developed using different techniques:
+- Base Model: This is a baseline model without tuning or data balancing.
+- Tuned Model: This model uses hyperparameter tuning to increase model performance.
+- SMOTE Model: This model first applies Synthetic Minority Oversampling Technique (SMOTE), balancing the data by generating synthetic data for the minority classes. Then, hyperparameter tuning is performed.
 
-## Base XGBoost Model
-- This is the Base Model that uses all independent features without tuning or balancing.
+# Model Performance Metrics
+- A classification report is generated for each model, showing model performance metrics such as Precision, Recall, Accuracy, and F1-Score.
+- A confusion matrix is generated for each model to show how its predictions compare to the actual sentiment labels.
+- The ROC-AUC score is computed for each model to evaluate the models' effectiveness.
 
-![base_model_cm](https://github.com/user-attachments/assets/9a5a4bea-41ad-4030-808a-b13b6521e31f)
+## Metrics Table
 
-The Base Model correctly predicts whether a customer will churn with the accuracy of a coin toss. Because the data is imbalanced (most customers don't actually churn), the model heavily favors predicting "won't churn."
+| Model  | Sentiment    | Precision | Recall | F1-Score |
+|--------|--------------|-----------|--------|----------|
+| Base   | Won't Churn  | 0.83      | 0.88   | 0.86     |
+|        | Will Churn   | 0.61      | 0.51   | 0.56     |
+| Tuned  | Won't Churn  | 0.85      | 0.92   | 0.88     |
+|        | Will Churn   | 0.70      | 0.54   | 0.61     |
+| SMOTE  | Won't Churn  | 0.90      | 0.77   | 0.83     |
+|        | Will Churn   | 0.55      | 0.77   | 0.64     |
 
-![base_model_report](https://github.com/user-attachments/assets/f842d79c-d610-4958-91f5-a5d68b219aa5)
+- The Tuned Model shows modest, consistent improvements over the Base Model across all metrics.
+- Compared to the Tuned Model, the SMOTE Model achieves substantially higher recall for churning customers, but at the cost of lower precision.
+- The Tuned Model outperforms SMOTE in precision for churning customers and recall for non-churning customers, indicating a more balanced trade-off.
 
-The Base Model has high precision, recall, and f1-score for customers who don't churn. However those metrics fall significantly when it comes to customers who do churn. For churn prediction tasks, the most important metric is recall of churned customers. The accuracy is good, but most of this accuracy comes from predicting that customers won't churn.
+---
+## Accuracy, ROC-AUC, and Macro-Average Metrics Table
 
-## Tuned Model
-- This model has hyperparameter tuning applied to the features in the base model.
-- Hyperparameters include learning rate, number of trees, max depth, subsample ratio, column sample by tree, minimum child weight, gamma (minimum loss reduction), alpha (L1 regularization weight), lambda (L2 regularization weight), and negative & postive weights.
-- Hyperparameters were tuned using GridSearch, which tested different parameter combinations to identify the set of parameters with the best model performance.
-
-![tuned_model_cm](https://github.com/user-attachments/assets/5d9a0afe-ecf4-4108-b74f-07b2d598b3db)
-
-After tuning, the model more often correctly predicts whether customer will or will not churn and makes fewer incorrect predictions indicating better overall accuracy and performance than the Base Model.
-
-![tuned_model_report](https://github.com/user-attachments/assets/021383bd-3010-47c0-a4d0-2543d03b6f25)
-
-The Tuned Model has slightly increased metrics across the board, indicating better overall performance than the base model. However, it is still biased towards predicting that customers won't churn and recall for predictions of customers who will churn has not risen much.
-
-![tuned_feature_importance](https://github.com/user-attachments/assets/1bbb6d04-8212-4447-909a-4a6eb08770ac)
-
-The most important features in the model are the contract type. Feature importance was computed using gain. The next most important features are Payment Method, Device Protection, Online Security, Tenure, and Monthly Charges.
-
-## SMOTE Model
-- For this model, the training data was first balanced using Synthetic Minority Oversampling Technique (SMOTE), a method to balance data by generating some synthetic data for the minorities from existing data.
-- Hyperparameter tuning was then applied to this model after data balancing to determine optimal parameters for the model.
-- The negative & postive weights parameter was removed from hyperparameter tuning since this is used for imbalanced data and SMOTE was already applied to the training data.
-
-![smote_cm](https://github.com/user-attachments/assets/5bac422a-9399-47b0-b2f7-3c7750c043bd)
-
-The SMOTE Model has more correct predictions of when a customer will churn. It also makes fewer predictions of "Won't Churn" when a customer acutally churns. However, it makes fewer correct predictions of when a customer won't churn and makes many more mistakes where it predicts a customer will churn when they actually remain.
-
-![smote_report](https://github.com/user-attachments/assets/87553ef4-4b05-4b10-a5ef-4b93673af28a)
-
-The recall for churning customers increased significantly, up around 42% from the Tuned Model (from 0.54 to 0.77). However this came at the tradeoff of lower precision and recall for non-churning customers and lower precision for churning customers. Overall accuracy was also lowered by 0.05.
-
-![smote_feature_importance](https://github.com/user-attachments/assets/78ba8269-1b74-4662-be38-4d859af6a409)
-
-Contract Type and Online Security are significantly more important to the SMOTE Model than other features.
-
-## Model Comparison Summary Table
-| Model       | Accuracy | Churn Recall | Non-Churn Recall | Notes |
-|-------------|----------|--------------|------------------|-------|
-| Base        | High     | Low (0.32)   | High             | Strong bias toward "no churn" |
-| Tuned       | Higher   | Slightly improved | Strong        | Overall improvement from Base Model |
-| SMOTE       | Lower    | High (0.77)  | Moderate         | Best for recall, most useful for churn prediction |
+| Model  | Precision | Recall | F1-Score | Accuracy | ROC-AUC |
+|--------|-----------|--------|----------|----------|---------|
+| Base   | 0.72      | 0.70   | 0.71     | 0.78     | 0.83    |
+| Tuned  | 0.77      | 0.73   | 0.75     | 0.82     | 0.86    |
+| SMOTE  | 0.72      | 0.77   | 0.64     | 0.77     | 0.85    |
+> Note: This table uses macro-averages for precision, recall, and f1-score.
+- The Base Model is consistently outperformed by the Tuned Model.
+- The Tuned Model has the strongest overall balance.
+- The SMOTE Model boosts recall with tradeoffs in precision and accuracy.
 
 # Churn Proportion Analysis
 Proportions of churned and retained customers are visualized across key features:
