@@ -1,7 +1,7 @@
 # Project Overview
 This project demonstrates predicting customer churn using synthetic telecom data with the XGBoost algorithm. The aim is to showcase techniques for identifying customers at risk of leaving through thorough exploratory analysis, model tuning, class balancing, and interactive visualization with Tableau. All steps use reproducible workflows and accessible via colorblind friendly visual design.
 
-For technical details, see the Jupyter Notebook.  
+For technical details, see the [Jupyter Notebook.](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction/blob/main/Telco%20Customer%20Churn%20Prediction.ipynb)  
 View the Tableau dashboard [here](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17515012306460/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link).
 
 # Tools & Technologies
@@ -28,21 +28,27 @@ View the Tableau dashboard [here](https://public.tableau.com/views/TelecomCustom
 
 # Exploratory Data Analysis
 ## Heatmap
-![numerical_heatmap](https://github.com/user-attachments/assets/dd2fdb5e-443f-47d7-8f65-f738c01feec4)
+<img width="1000" height="600" alt="numerical_heatmap" src="https://github.com/user-attachments/assets/fe374919-abad-418b-8f4a-3cf9599852d7" />
 
-Tenure has high 0.83 correlation with Total Charges, which is reasonable considering the longer a customer stays with the company, the larger the accumulation of their charges.
-Monthly Charges has a moderate 0.65 correlation with Total Charges. This likely means that customers have a tendency to change their plans, and by extension, their Monthly Charges rather than sticking to the same plan.
+- Tenure has high 0.83 correlation with Total Charges, which is reasonable considering the longer a customer stays with the company, the larger the accumulation of their charges.
+- Monthly Charges has a moderate 0.65 correlation with Total Charges. This likely means that customers have a tendency to change their plans, and by extension, their Monthly Charges rather than sticking to the same plan.
 
+---
 ## Categorical Variable Counts
-![categorical_var_counts](https://github.com/user-attachments/assets/b4e15e8a-ac3d-4863-b858-d41b8f8d7aa9)
+<img width="1400" height="1400" alt="categorical_var_counts" src="https://github.com/user-attachments/assets/ec4a5564-f347-46c5-b176-7932d025f2e4" />
 
-Most of the variables are imbalanced. While this is normal in the telecom industry, since most customers won't churn, this may cause some issues with model performance and results. We'll later model the data with and without balancing the data.
+- Most of the variables are imbalanced.
+- While this is normal in the telecom industry, since most customers won't churn, this may cause some issues with model performance and results.
+- The data will be modeled both before and after balancing.
 
+---
 ## Numerical Variable Distributions
-![numerical_distributions](https://github.com/user-attachments/assets/d35d5498-efed-433f-b363-c9045a652444)
+<img width="1500" height="500" alt="numerical_distributions" src="https://github.com/user-attachments/assets/1e5e5f55-d3ef-46d8-903b-215e3f74e871" />
 
-These variables do not have normal distributions. Tenure and Monthly Charges are multimodal, while Total Charges is right skewed. These features will require a transformation to deal with the skew before modeling.
+- These variables do not have normal distributions.
+- Tenure and Monthly Charges are multimodal, while Total Charges is right skewed. These features will require a transformation to deal with the skew before modeling.
 
+---
 ## Tableau Dashboard
 - View the dashboard [here](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17515012306460/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link).
 - The visualizations focus on two informative continuous variables — Monthly Charges and Tenure — which show clear churn-related trends.
@@ -76,29 +82,46 @@ The evaluation metric best suited for the situation is aucpr. This is the Area U
 
 | Model  | Sentiment    | Precision | Recall | F1-Score |
 |--------|--------------|-----------|--------|----------|
-| Base   | Won't Churn  | 0.83      | 0.88   | 0.86     |
-|        | Will Churn   | 0.61      | 0.51   | 0.56     |
-| Tuned  | Won't Churn  | 0.85      | 0.92   | 0.88     |
-|        | Will Churn   | 0.70      | 0.54   | 0.61     |
+| Base   | Won't Churn  | 0.83      | 0.88   | 0.85     |
+|        | Will Churn   | 0.59      | 0.49   | 0.54     |
+| Tuned  | Won't Churn  | 0.85      | 0.91   | 0.88     |
+|        | Will Churn   | 0.69      | 0.54   | 0.61     |
 | SMOTE  | Won't Churn  | 0.90      | 0.77   | 0.83     |
 |        | Will Churn   | 0.55      | 0.77   | 0.64     |
 
 - The Tuned Model shows modest, consistent improvements over the Base Model across all metrics.
-- Compared to the Tuned Model, the SMOTE Model achieves substantially higher recall for churning customers, but at the cost of lower precision.
-- The Tuned Model outperforms SMOTE in precision for churning customers and recall for non-churning customers, indicating a more balanced trade-off.
+- Compared to the Tuned Model, the SMOTE Model achieves substantially higher recall for churning customers
+- The Tuned Model outperforms SMOTE in precision for churning customers and recall for non-churning customers.
 
 ---
 ## Accuracy, ROC-AUC, and Macro-Average Metrics Table
 
 | Model  | Precision | Recall | F1-Score | Accuracy | ROC-AUC |
 |--------|-----------|--------|----------|----------|---------|
-| Base   | 0.72      | 0.70   | 0.71     | 0.78     | 0.83    |
-| Tuned  | 0.77      | 0.73   | 0.75     | 0.82     | 0.86    |
-| SMOTE  | 0.72      | 0.77   | 0.64     | 0.77     | 0.85    |
+| Base   | 0.71      | 0.69   | 0.70     | 0.78     | 0.83    |
+| Tuned  | 0.77      | 0.73   | 0.74     | 0.81     | 0.86    |
+| SMOTE  | 0.73      | 0.77   | 0.74     | 0.78     | 0.85    |
 > Note: This table uses macro-averages for precision, recall, and f1-score.
 - The Base Model is consistently outperformed by the Tuned Model.
-- The Tuned Model has the strongest overall balance.
+- The Tuned Model and SMOTE Models are just as balanced.
+- The Tuned Model boosts precision and accuracy with tradeoffs in recall.
 - The SMOTE Model boosts recall with tradeoffs in precision and accuracy.
+
+## Feature Importance
+Feature importance is used to rank how inputs affect a model's predictions. In linear models, the most important features often have the largest weights. In tree-based or complex models, such as with the XGBoost model being used in this project, importance can reflect split frequency, information gain, or influence on prediction variance.
+
+---
+<img width="2480" height="1361" alt="tuned_feature_importance" src="https://github.com/user-attachments/assets/468a51fb-22c2-4b2d-8ca9-19da8a5b9de8" />
+
+- The most important feature in the model is the Two-Year Contract. 
+- The next most important features (in order) are Payment Method, One-Year Contract, Device Protection, Online Security, Tenure, and Monthly Charges.
+---
+
+<img width="2480" height="1361" alt="smote_feature_importance" src="https://github.com/user-attachments/assets/91f8a6eb-acc0-464d-9b35-48c94425a0e6" />
+
+- Contract Type and Online Security are significantly more important to the SMOTE Model than other features.
+- Contract Type becomes more important with both features having the highest ranks now.
+- Online Security becomes more important than Device Protection, while Payment Method is far less important after data balancing.
 
 # Churn Proportion Analysis
 Proportions of churned and retained customers are visualized across key features:
@@ -106,22 +129,39 @@ Proportions of churned and retained customers are visualized across key features
 ## Contract Type
 ![churn_by_contract](https://github.com/user-attachments/assets/7731f475-183a-4e91-9e0e-21b3be36ebe2)
 
-Customers with month-to-month contracts have the highest churn rates, while those on 1-year and 2-year contracts are significantly less likely to churn. This suggests that contract length is negatively associated with churn, and long-term contracts may help retain customers.
+- Customers with month-to-month contracts have the highest churn rates, while those on 1-year and 2-year contracts are significantly less likely to churn.
+- This suggests that contract length is negatively associated with churn, and long-term contracts may help retain customers.
+- This plot's proportions are relative to the category.
 
+---
+| Contract Type     | Churners | % of Total | Non-Churners | % of Total |
+|-------------------|----------|------------|---------------|------------|
+| Month-to-Month    | 1,655    | 23.50%     | 2,220         | 31.52%     |
+| One-Year          | 166      | 2.36%      | 1,307         | 18.56%     |
+| Two-Year          | 48       | 0.68%      | 1,647         | 23.38%     |
+
+- Actual percentages for the contract types by churn to the entire dataset are shown in this table.
+- Since (1655) /  (1655 + 166 + 48) = 0.8854, around 89% of churning customers are on Month-to-Month contracts.
+- The number of non-churners is greater with Two-Year Contracts than with One-Year Contracts.
+
+---
 ![churn_contract_pie](https://github.com/user-attachments/assets/4ec9bc1a-c1aa-4f57-896b-20399ec3d5c4)
 
 Of all churning customers, around 90% are on month-to-month contracts. This drops to around 9% for customers on 1 year contracts. For the company, it is of the utmost importance to get customers on 1 or 2 year contracts, which will drastically reduce churn rate.
 
+---
 ## Internet Service
 ![churn_by_internet_service](https://github.com/user-attachments/assets/72ac1b6a-1aa0-42df-8da1-ecc28158f810)
 
 Churn is also higher among customers who have internet service with the company. Churn rate is even higher for those who have fiber optic connections compared to DSL. This may reflect potential service quality or satisfaction issues with fiber optic offerings and even the internet service in general.
 
+---
 ## Payment Methods 
 ![churn_by_payment_method](https://github.com/user-attachments/assets/ece176ff-cc52-4a1e-b5f2-52db3eb62343)
 
 Customers who pay via electronic checks have higher proportions of churning customers than those who use other payment methods (and those other payment methods have roughly the same levels of churn). This could indicate high frequencies of technical issues for customers pay using electronic checks, which leads to frustration and churn.
 
+---
 ## Tenure
 ![churn_by_tenure](https://github.com/user-attachments/assets/c34ea95f-1528-410d-8fe5-e1deccaf4fdf)
 
@@ -134,7 +174,7 @@ Customers tend to churn the most within the first couple months of tenure. The f
 - Since churn rates drop substantially after the first year, the company may benefit from offering upfront incentives to encourage long-term commitments and reduce early-stage churn (which is where churn rate is the highest).
 
 # Insights
-- Customers with month-to-month contracts are ~9× more likely to churn than those on annual contracts.
+- Churning customers with month-to-month contracts have been ~9× more likely to churn than those on annual contracts.
 - Internet service and payments via electronic checks show elevated churn risk.
 - Most churn occurs within the first 4 months of a customer's tenure, with the first month having the highest churn risk.
 
