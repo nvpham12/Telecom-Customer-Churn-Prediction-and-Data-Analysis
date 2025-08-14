@@ -15,8 +15,8 @@ Identify high-risk customers for a telecom provider to enable proactive retentio
 
 ## Links
 - [Jupyter Notebook.](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction/blob/main/Telco%20Customer%20Churn%20Prediction.ipynb)  
-- [Tableau Dashboard](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17515012306460/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
-- [Full Technical Report](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction/blob/main/technical_report_churn_prediction.md)
+- [Tableau Dashboard](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17551339538610/Dashboard?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+- [Full Technical Report](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction/blob/main/Technical%20Report.md)
 
 ## Data Source and License
 - Dataset: Telco Customer Churn

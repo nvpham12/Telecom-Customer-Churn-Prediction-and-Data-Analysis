@@ -1,8 +1,9 @@
 # Project Overview
 This project demonstrates predicting customer churn using synthetic telecom data with the XGBoost algorithm. The aim is to showcase techniques for identifying customers at risk of leaving through thorough exploratory analysis, model tuning, class balancing, and interactive visualization with Tableau. All steps use reproducible workflows and accessible via colorblind friendly visual design.
 
-For technical details, see the [Jupyter Notebook.](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction/blob/main/Telco%20Customer%20Churn%20Prediction.ipynb)  
-View the Tableau dashboard [here](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17515012306460/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link).
+To view the code, refer to the [Jupyter Notebook.](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction/blob/main/Telco%20Customer%20Churn%20Prediction.ipynb)  
+
+View the Tableau dashboard [here](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17551339538610/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
 # Tools & Technologies
 - **Pandas** – data manipulation and cleaning
@@ -55,7 +56,7 @@ View the Tableau dashboard [here](https://public.tableau.com/views/TelecomCustom
 - Filters for categorical features allow dynamic segmentation to explore how churn patterns shift across different customer groups.
 
 ## Dashboard Preview
-<img width="1799" height="1199" alt="telco-dashboard" src="https://github.com/user-attachments/assets/56a58c43-f4f8-43d1-a15e-56a0ec7358c3" />
+<img width="1635" height="1090" alt="Telco Churn Dashboard Preview" src="https://github.com/user-attachments/assets/947d5169-8907-4532-8568-46f014f8e198" />
 
 # Data Preprocessing
 - Total Charges is removed due to high correlation with other features.
