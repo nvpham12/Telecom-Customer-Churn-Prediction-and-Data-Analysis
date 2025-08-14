@@ -51,12 +51,12 @@ View the Tableau dashboard [here](https://public.tableau.com/views/TelecomCustom
 
 ---
 ## Tableau Dashboard
-- View the dashboard [here](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17515012306460/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link).
+- View the dashboard [here](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17551339538610/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 - The visualizations focus on two informative continuous variables — Monthly Charges and Tenure — which show clear churn-related trends.
 - Filters for categorical features allow dynamic segmentation to explore how churn patterns shift across different customer groups.
 
 ## Dashboard Preview
-<img width="1635" height="1090" alt="Telco Churn Dashboard Preview" src="https://github.com/user-attachments/assets/947d5169-8907-4532-8568-46f014f8e198" />
+<img width="1720" height="1190" alt="Telco Dashboard Preview" src="https://github.com/user-attachments/assets/e42571f2-7aa9-467e-93fa-f03485af9800" />
 
 # Data Preprocessing
 - Total Charges is removed due to high correlation with other features.
