@@ -14,7 +14,7 @@ This project demonstrates predicting customer churn using synthetic telecom data
 ## Approach
 - Cleaned & transformed synthetic churn dataset; handled missing values, changed data types, encoded categorical features, and transformed skewed distributions.
 - Trained XGBoost models: baseline, hyperparameter-tuned, and SMOTE-balanced for class imbalance.
-- Built Tableau dashboard to visualize churn by tenure, contract type, and other features.
+- Built a Tableau dashboard to visualize churn by tenure, contract type, and other features.
 
 # Links
 - [Jupyter Notebook with code](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction/blob/main/Telco%20Customer%20Churn%20Prediction.ipynb)  
