@@ -44,6 +44,11 @@ This project demonstrates predicting customer churn using synthetic telecom data
 | TotalCharges       | object   |
 | Churn              | object   |
 
+## Approach
+- Cleaned & transformed synthetic churn dataset; handled missing values, changed data types, encoded categorical features, and transformed skewed distributions.
+- Trained XGBoost models: baseline, hyperparameter-tuned, and SMOTE-balanced for class imbalance.
+- Built a Tableau dashboard to visualize churn by tenure, contract type, and other features.
+
 # Data Cleaning
 - There were missing values for monthly charges for new customers, which were imputed using their total charges.
 - Data types are changed to appropriate data types for manipulation and modeling.
