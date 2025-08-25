@@ -1,11 +1,11 @@
-# Project Overview
+# Project Background
 This project demonstrates predicting customer churn using synthetic telecom data with the XGBoost algorithm. The aim is to showcase techniques for identifying customers at risk of leaving through thorough exploratory analysis, model tuning, class balancing, and interactive visualization with Tableau. All steps use reproducible workflows and accessible via colorblind friendly visual design.
 
-To view the code, refer to the [Jupyter Notebook.](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction/blob/main/Telco%20Customer%20Churn%20Prediction.ipynb)  
+## Links
+- [Jupyter Notebook](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction/blob/main/Telco%20Customer%20Churn%20Prediction.ipynb)  
+- [Tableau dashboard](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17551339538610/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
-View the Tableau dashboard [here](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17551339538610/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
-
-# Tools & Technologies
+## Tools & Technologies
 - **Pandas** – data manipulation and cleaning
 - **NumPy** - data transformation
 - **Matplotlib / Seaborn** – EDA and visualizations
@@ -15,16 +15,38 @@ View the Tableau dashboard [here](https://public.tableau.com/views/TelecomCustom
 - **Imbalanced-learn (imblearn)** - data balancing via SMOTE
 - **Tableau** – interactive dashboarding
 
-# Data Source and License
-- Dataset: Telco Customer Churn
-- Authors: scottdangelo
-- Source: [IBM](https://github.com/IBM/telco-customer-churn-on-icp4d)
-- License: Apache License 2.0
-- Reference: IBM. (2019). Telco Customer Churn for Watson Studio.
+## Data
+- The data contains information on telecom customer churn and contains 7043 rows and 21 columns.
+- The data is synthetic and was made and shared by IBM.
+- The initial schema is as follows:
+
+| Field Name         | Type     |
+|--------------------|----------|
+| CustomerID         | object   |
+| Gender             | object   |
+| SeniorCitizen      | int64    |
+| Partner            | object   |
+| Dependents         | object   |
+| Tenure             | int64    |
+| PhoneService       | object   |
+| MultipleLines      | object   |
+| InternetService    | object   |
+| OnlineSecurity     | object   |
+| OnlineBackup       | object   |
+| DeviceProtection   | object   |
+| TechSupport        | object   |
+| StreamingTV        | object   |
+| StreamingMovies    | object   |
+| Contract           | object   |
+| PaperlessBilling   | object   |
+| PaymentMethod      | object   |
+| MonthlyCharges     | float64  |
+| TotalCharges       | object   |
+| Churn              | object   |
 
 # Data Cleaning
 - There were missing values for monthly charges for new customers, which were imputed using their total charges.
-- Data types are changed to appropriate formats for manipulation and modeling.
+- Data types are changed to appropriate data types for manipulation and modeling.
 - Extra whitespace is removed from categorical variables.
 
 # Exploratory Data Analysis
@@ -38,8 +60,7 @@ View the Tableau dashboard [here](https://public.tableau.com/views/TelecomCustom
 ## Categorical Variable Counts
 <img width="1400" height="1400" alt="categorical_var_counts" src="https://github.com/user-attachments/assets/ec4a5564-f347-46c5-b176-7932d025f2e4" />
 
-- Most of the variables are imbalanced.
-- While this is normal in the telecom industry, since most customers won't churn, this may cause some issues with model performance and results.
+- Most of the variables are imbalanced. While this is normal in the telecom industry, since most customers won't churn, this may cause some issues with model performance and results.
 - The data will be modeled both before and after balancing.
 
 ---
@@ -51,12 +72,11 @@ View the Tableau dashboard [here](https://public.tableau.com/views/TelecomCustom
 
 ---
 ## Tableau Dashboard
-- View the dashboard [here](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17551339538610/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
-- The visualizations focus on two informative continuous variables — Monthly Charges and Tenure — which show clear churn-related trends.
-- Filters for categorical features allow dynamic segmentation to explore how churn patterns shift across different customer groups.
-
-## Dashboard Preview
 <img width="1720" height="1190" alt="Telco Dashboard Preview" src="https://github.com/user-attachments/assets/e42571f2-7aa9-467e-93fa-f03485af9800" />
+
+- View the dashboard [here](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17551339538610/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+- The visualizations focus on Monthly Charges, Tenure, Total Revenue, and Number of Customers which show churn patterns or segments.
+- Filters for categorical features allow dynamic segmentation to explore how churn patterns shift across different customer groups.
 
 # Data Preprocessing
 - Total Charges is removed due to high correlation with other features.
@@ -142,7 +162,7 @@ Proportions of churned and retained customers are visualized across key features
 | Two-Year          | 48       | 0.68%      | 1,647         | 23.38%     |
 
 - Actual percentages for the contract types by churn to the entire dataset are shown in this table.
-- Since (1655) /  (1655 + 166 + 48) = 0.8854, around 89% of churning customers are on Month-to-Month contracts.
+- Since $1655 /  (1655 + 166 + 48) = 0.8854$, around 89% of churning customers are on Month-to-Month contracts.
 - The number of non-churners is greater with Two-Year Contracts than with One-Year Contracts.
 
 ---
@@ -168,24 +188,31 @@ Customers who pay via electronic checks have higher proportions of churning cust
 
 Customers tend to churn the most within the first couple months of tenure. The first month is the most important with customers churning more in that particular month than in any other month.
 
-# Recommendations
+# Executive Summary
+## Insights
+- Churning customers with month-to-month contracts have been ~9× more likely to churn than those on annual contracts.
+- Internet service and payments via electronic checks show elevated churn risk.
+- Most churn occurs within the first 4 months of a customer's tenure, with the first month having the highest churn risk.
+
+## Recommendations
 - For predicting customer churn, the SMOTE model would be preferred despite having lower accuracy than the Base Model and Tuned Models. Since telecom data tends to be imbalanced with customer churn being the minority, models should be optimized for the highest recall, which the SMOTE Model has (up to 42% improvement from the Tuned Model).
 - Because customers tend to churn significantly more after their first month with the telecom company, the company should prioritize deals and promotions that lock the customer into a 1 year or 2 contract.
 - The company can offer customers discounted or free phones or discounts through statement credits to win over new customers, while locking them into 1 or 2 year contracts.
 - Since churn rates drop substantially after the first year, the company may benefit from offering upfront incentives to encourage long-term commitments and reduce early-stage churn (which is where churn rate is the highest).
 
-# Insights
-- Churning customers with month-to-month contracts have been ~9× more likely to churn than those on annual contracts.
-- Internet service and payments via electronic checks show elevated churn risk.
-- Most churn occurs within the first 4 months of a customer's tenure, with the first month having the highest churn risk.
-
-# Clarifying Questions
+## Clarifying Questions
 - Why are customers with internet service more likely to churn?
 - Are there pain points in the onboarding process?
 - Do electronic check users face billing friction or service issues?
 
-# Next Steps
+## Next Steps
 - Investigate whether onboarding experience is correlated with early churn.
 - Explore alternative classification algorithms such as Random Forest or Logistic Regression.
-- Test different resampling strategies beyond SMOTE (e.g., ADASYN or Tomek Links).
-- Add additional features such as quarters, geographic information, and download rates.
+- Test different resampling strategies beyond SMOTE.
+
+# Data Source and License
+- Dataset: Telco Customer Churn
+- Authors: scottdangelo
+- Source: [IBM](https://github.com/IBM/telco-customer-churn-on-icp4d)
+- License: Apache License 2.0
+- Reference: IBM. (2019). Telco Customer Churn for Watson Studio.
