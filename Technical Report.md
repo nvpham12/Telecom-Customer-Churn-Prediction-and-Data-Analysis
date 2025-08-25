@@ -1,5 +1,5 @@
 # Project Background
-This project demonstrates predicting customer churn using synthetic telecom data with the XGBoost algorithm. The aim is to showcase techniques for identifying customers at risk of leaving through thorough exploratory analysis, model tuning, class balancing, and interactive visualization with Tableau. All steps use reproducible workflows and accessible via colorblind friendly visual design.
+This project demonstrates customer churn prediction using synthetic telecom data with the XGBoost algorithm and interactive visualization with Tableau.
 
 ## Links
 - [Jupyter Notebook](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction/blob/main/Telco%20Customer%20Churn%20Prediction.ipynb)  
@@ -14,6 +14,11 @@ This project demonstrates predicting customer churn using synthetic telecom data
 - **GridSearchCV** – hyperparameter tuning
 - **Imbalanced-learn (imblearn)** - data balancing via SMOTE
 - **Tableau** – interactive dashboarding
+
+## Approach
+- Cleaned & transformed synthetic churn dataset; handled missing values, changed data types, encoded categorical features, and transformed skewed distributions.
+- Trained XGBoost models: baseline, hyperparameter-tuned, and SMOTE-balanced for class imbalance.
+- Built a Tableau dashboard to visualize churn by tenure, contract type, and other features.
 
 ## Data
 - The data contains information on telecom customer churn and contains 7043 rows and 21 columns.
@@ -43,11 +48,6 @@ This project demonstrates predicting customer churn using synthetic telecom data
 | MonthlyCharges     | float64  |
 | TotalCharges       | object   |
 | Churn              | object   |
-
-## Approach
-- Cleaned & transformed synthetic churn dataset; handled missing values, changed data types, encoded categorical features, and transformed skewed distributions.
-- Trained XGBoost models: baseline, hyperparameter-tuned, and SMOTE-balanced for class imbalance.
-- Built a Tableau dashboard to visualize churn by tenure, contract type, and other features.
 
 # Data Cleaning
 - There were missing values for monthly charges for new customers, which were imputed using their total charges.
