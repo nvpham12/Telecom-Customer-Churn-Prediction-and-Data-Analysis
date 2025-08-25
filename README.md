@@ -29,35 +29,6 @@ This project demonstrates predicting customer churn using synthetic telecom data
 - Filters for categorical features allow dynamic segmentation to explore how churn patterns shift across different customer groups.
 
 # Executive Summary
-## Churn Prediction Model Performance Metrics
-### Metrics Table
-
-| Model  | Sentiment    | Precision | Recall | F1-Score |
-|--------|--------------|-----------|--------|----------|
-| Base   | Won't Churn  | 0.83      | 0.88   | 0.85     |
-|        | Will Churn   | 0.59      | 0.49   | 0.54     |
-| Tuned  | Won't Churn  | 0.85      | 0.91   | 0.88     |
-|        | Will Churn   | 0.69      | 0.54   | 0.61     |
-| SMOTE  | Won't Churn  | 0.90      | 0.77   | 0.83     |
-|        | Will Churn   | 0.55      | 0.77   | 0.64     |
-
-- The Tuned Model shows modest, consistent improvements over the Base Model across all metrics.
-- Compared to the Tuned Model, the SMOTE Model achieves substantially higher recall for churning customers
-- The Tuned Model outperforms SMOTE in precision for churning customers and recall for non-churning customers.
-
-### Accuracy, ROC-AUC, and Macro-Average Metrics Table
-
-| Model  | Precision | Recall | F1-Score | Accuracy | ROC-AUC |
-|--------|-----------|--------|----------|----------|---------|
-| Base   | 0.71      | 0.69   | 0.70     | 0.78     | 0.83    |
-| Tuned  | 0.77      | 0.73   | 0.74     | 0.81     | 0.86    |
-| SMOTE  | 0.73      | 0.77   | 0.74     | 0.78     | 0.85    |
-> Note: This table uses macro-averages for precision, recall, and f1-score.
-- The Base Model is consistently outperformed by the Tuned Model.
-- The Tuned Model and SMOTE Models are just as balanced.
-- The Tuned Model boosts precision and accuracy with tradeoffs in recall.
-- The SMOTE Model boosts recall with tradeoffs in precision and accuracy.
-
 ## Insights
 - Churning customers with month-to-month contracts have been ~9× more likely to churn than those on annual contracts.
 - Internet service and payments via electronic checks show elevated churn risk.
