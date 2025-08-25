@@ -19,7 +19,7 @@ This project demonstrates predicting customer churn using synthetic telecom data
 # Links
 - [Jupyter Notebook.](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction/blob/main/Telco%20Customer%20Churn%20Prediction.ipynb)  
 - [Tableau Dashboard](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17551339538610/Dashboard?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
-- [Technical Report](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction/blob/main/Technical%20Report.md)
+- [Full Technical Report](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction/blob/main/Technical%20Report.md)
 
 # Tableau Dashboard Preview
 <img width="1720" height="1190" alt="Telco Dashboard Preview" src="https://github.com/user-attachments/assets/e42571f2-7aa9-467e-93fa-f03485af9800" />
