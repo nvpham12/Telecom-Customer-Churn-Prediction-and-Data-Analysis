@@ -1,5 +1,5 @@
 # Project Background
-This project demonstrates predicting customer churn using synthetic telecom data with the XGBoost algorithm. The aim is to showcase techniques for identifying customers at risk of leaving through thorough exploratory analysis, model tuning, class balancing, and interactive visualization with Tableau. All steps use reproducible workflows and accessible via colorblind friendly visual design.
+This project demonstrates customer churn prediction using synthetic telecom data with the XGBoost algorithm and interactive visualization with Tableau.
 
 ## Tools & Technologies
 - **Pandas** – data manipulation and cleaning
