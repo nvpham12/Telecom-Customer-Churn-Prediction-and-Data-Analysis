@@ -14,41 +14,44 @@ This project demonstrates customer churn prediction using synthetic telecom data
 ## Approach
 - Cleaned & transformed synthetic churn dataset; handled missing values, changed data types, encoded categorical features, and transformed skewed distributions.
 - Trained XGBoost models: baseline, hyperparameter-tuned, and SMOTE-balanced for class imbalance.
+- Visualized churn patterns and customer distributions using Seaborn.
 - Built a Tableau dashboard to visualize churn by tenure, contract type, and other features.
 
 # Links
-- [Jupyter Notebook with code](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction/blob/main/Telco%20Customer%20Churn%20Prediction.ipynb)  
+- [Data Analytics Jupyter Notebook](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction-and-Analysis/blob/main/Data%20Analysis%20Telecom%20Customer%20Churn.ipynb)
+- [Analytics Report]()
+- [Data Cleaning and Churn Prediction Jupyter Notebook](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction-and-Analysis/blob/main/Churn%20Prediction%20Telecom%20Customers.ipynb)
+- [Churn Prediction Model Technical Report](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction/blob/main/Technical%20Report.md)
 - [Tableau Dashboard](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17551339538610/Dashboard?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
-- [Full Technical Report](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction/blob/main/Technical%20Report.md)
-
-# Tableau Dashboard Preview
-<img width="1720" height="1190" alt="Telco Dashboard Preview" src="https://github.com/user-attachments/assets/e42571f2-7aa9-467e-93fa-f03485af9800" />
-
-- View the dashboard [here](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17551339538610/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
-- The visualizations focus on Monthly Charges, Tenure, Total Revenue, and Number of Customers which show churn patterns or segments.
-- Filters for categorical features allow dynamic segmentation to explore how churn patterns shift across different customer groups.
 
 # Executive Summary
 ## Insights
-- Churning customers with month-to-month contracts have been ~9× more likely to churn than those on annual contracts.
-- Internet service and payments via electronic checks show elevated churn risk.
-- Most churn occurs within the first 4 months of a customer's tenure, with the first month having the highest churn risk.
+- Customers with Monthly Charges ranging from \$75-100 are the most numerous and have the highest churn rates.
+- The monthly charge brackets may represent different customer segments for targeted retention strategies.
+- Most of the company's customers are new customers, making onboarding experiences very significant to reducing churn.
+- Those on Month-to-Month contracts have around 14 times the churn rate of those on Two-Year contracts and around 4 times the churn rate of those on One-Year contracts.
+- Around 89% of churning customers are on Month-to-Month contracts.
+- Customers using the electronic payment method have higher churn rates than other payment method, which may indicate serious technical issues, poor user interface for inputting information, or lack of security for the payment method.
+- Senior Citizens have higher churn rates than non-seniors.
+- Customers using the Online Security service or Tech Support have lower churn rates than those who do not use them.
 
 ## Recommendations
-- For predicting customer churn, the SMOTE model would be preferred despite having lower accuracy than the Base Model and Tuned Models. Since telecom data tends to be imbalanced with customer churn being the minority, models should be optimized for the highest recall, which the SMOTE Model has (up to 42% improvement from the Tuned Model).
-- Because customers tend to churn significantly more after their first month with the telecom company, the company should prioritize deals and promotions that lock the customer into a 1 year or 2 contract.
-- The company can offer customers discounted or free phones or discounts through statement credits to win over new customers, while locking them into 1 or 2 year contracts.
-- Since churn rates drop substantially after the first year, the company may benefit from offering upfront incentives to encourage long-term commitments and reduce early-stage churn (which is where churn rate is the highest).
+- Since customers tend to churn significantly more after their first month, the company should prioritize deals and promotions that lock the customer into a 1 year or 2 contract. Developing a strong onboarding experience and engaging new customers is very important.
+- The company can offer customers discounted or free phones or discounts through statement credits to win over new customers, while locking them into longer contracts, which have significantly lower churn rates.
+- Promote add-ons and other services, especially the online security add-on. Investigate potential technical issues with the electronic payment system and encourage customers to use tech support when necessary.
+- Study factors that keep the highest tenure customers loyal such as plan stability or customer service. Use these insights to replicate loyalty drivers for newer customers. Offer referral bonuses to leverage the satisfaction of the highest tenure customers.
+- Consider cap-based pricing models or tiered loyalty rewards to soften the impact of long-term costs when customers track their expenses.
+- Develop targeted strategies for different customer segments, such as those with different levels of monthly spending.
+- Provide new or enhance existing senior discounts to reduce churn among senior customers. Investigate if the higher churn rates from senior citizens comes from switching plans or high age health compllications.
+- Customers without dependents have higher churn rates than those that do. Consider reducing single line prices or providing other offers to those with single lines to incentivize adding more lines.
 
 ## Clarifying Questions
-- Why are customers with internet service more likely to churn?
-- Are there pain points in the onboarding process?
-- Do electronic check users face billing friction or service issues?
-
-## Next Steps
-- Investigate whether onboarding experience is correlated with early churn.
-- Explore alternative classification algorithms such as Random Forest or Logistic Regression.
-- Test different resampling strategies beyond SMOTE.
+- Why do customers tend to churn more when they have internet services with the company?
+- Are there any issues with the company's internet services such as connection speed and stability, especially for fiber optic types?
+- Are there any technical problems with the payment system for electronics checks? Does this lead customers to churn?
+- Why do customers tend to churn most often after the first 1 or 2 months with the company? Is the onboarding experience lacking for new customers?
+- Are senior discounts offered? Are they discounted enough to prevent churn from senior customers?
+- How does the company's pricing and service coverage compare to competitors?
 
 # Data Source and License
 - Dataset: Telco Customer Churn

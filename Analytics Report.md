@@ -1,0 +1,164 @@
+# Project Background
+This project demonstrates data analytics on customer churn patterns using synthetic telecom data. Data visualization was completed using Seaborn and Matplotlib. Interactive visualization was done with Tableau.
+
+## Tools & Technologies
+- **Pandas** – data manipulation
+- **Matplotlib / Seaborn** – EDA and visualizations
+- **Tableau** – interactive dashboarding
+
+## Approach
+- Cleaned & transformed synthetic churn dataset; handled missing values, changed data types, encoded categorical features, and transformed skewed distributions. 
+- The data used for the analytics notebook was a previously cleaned copy. The code for data cleaning is in the Churn Prediction Model Jupyter Notebook file.
+- Used Matplotlib and Seaborn to generate visualizations that show churn patterns and customer distributions.
+- Interpreted the visualizations, documenting actionable insights and recommendations.
+- Built a Tableau dashboard to visualize churn by tenure, contract type, and other features.
+
+# Links
+- [Data Analytics Jupyter Notebook]()
+- [Tableau Dashboard]()
+
+# Numerical Feature Distributions
+## Total Charges
+
+- The company's has a consistently decreasing number of customers as Total Charges goes up. The rate of decrease is initially rapid (at lower levels of total charges) but tapers off at higher levels of total charges.
+- The majority of the company's customers are likely new customers or customers with cheaper plans, since bins with the lowest total charges have the most customers. 
+---
+
+## Monthly Charges
+
+- The largest bin of customers have Monthly Charges of around \$20, which should represent cheap, single line plans.
+- For other levels of Monthly Charges, there are distinct a bell shaped curves at around 40 to 70 dollars of charges then another taller bell curve from 70 to 120 dollars.
+- These regions can represent different customer segments based on levels of Monthly Charges that can be targeted differently.
+---
+
+### 30-70 Group
+
+- For this customer segment, the company should focus on flexibility and affordability.
+- Offer personalized phone upgrades based on usage patterns.
+- Highlight features these customers is missing out on like speeds or no throttling.
+- Send anniversary messages or small rewards.
+- Invite these customers to beta programs or exclusive events.
+- Encourage these customers to refer friends/family with bonuses.
+- Provide tips or tutorials to help these customers get more out of their current plan.
+---
+
+### 70-120 Group
+
+- For this customer group, the company should focus on premium features and reliability.
+- Offer priority customer service or dedicated account managers.
+- Provide early access to new features or services.
+- Give these customers VIP status with perks like free upgrades, bundled discounts, or loyalty tiers.
+- Perform regular check-ins to ensure customer satisfaction.
+- Ask for feedback and make these customers feel their voices are heard.
+- Monitor for any signs of dissatisfaction or lower usage. Intervene early with personalized offers or support to prevent this group especially from churning.
+---
+
+## Tenure
+
+- The company's largest customer counts come from their lowest tenure (newest customers) and highest tenure (the oldest customers), especially the lowest tenure group.
+- The lowest tenure group has at least 50% more customers than any other group, including the group with the second most number of customers.
+- Other tenure groups have roughly the same number of customers on average.
+---
+
+# Churn Proportion Analysis Across Features
+## Contract Type
+
+- The churn rate drastically decreases between contract types.
+- Customers on One-Year contract have around a quarter of the churn rate as those on Month-to-Month contracts.
+- Those on Two-Year contracts in turn, have around a quarter of the churn rate as those on One-Year contracts.
+- The churn rate of those on Month-to-Month contracts is around 14 times that of those on Two-Year contracts.
+
+| Contract Type   | Churners | % of Total | Non-Churners | % of Total |
+|-----------------|----------|------------|--------------|------------|
+| Month-to-Month  | 1,655    | 23.50%     | 2,220        | 31.52%     |
+| 1 Year          | 166      | 2.36%      | 1,307        | 18.56%     |
+| 2 Year          | 48       | 0.68%      | 1,647        | 23.38%     |
+
+- The company's overall churn rate is around 25%.
+- People with Month-to-Month contracts make up a little over half of the company's total customers.
+- The number of churning customers drastically decreases between contract types.
+
+### Contract Churn Pie
+
+- Of all churning customers, approximately 89% are on Month-to-Month contracts, 9% on 1-Year contracts, and 2% on 2-Year contracts. 
+- For the company, it is of the utmost importance to get customers on 1 or 2 year contracts. Even 1-Year contracts will drastically reduce churn rate.
+---
+
+## Internet Service
+
+- There are higher proportions of customers who churn when they have internet service. 
+- Fiber Optic users have around double the churn ratio of DSL users, indicating potential issues with the service.
+---
+
+## Payment Method
+- Customers who pay via electronic checks have higher proportions of churning customers than those who use other payment methods (and those other payment methods have roughly the same levels of churn). 
+- This may be a sign of serious technical problems with the electronic check payment method leading to churn.
+---
+
+## Online Security Churn Proportions
+
+- The churn rate seems to be higher for people who have not had online security.
+- Market the benefits of having online security and the strengths of the company's service.
+---
+
+## Tech Support Churn Proportions
+
+- The churn rate seems to be higher for people who have not had tech support.
+- Encourage customers to use tech support as the company's tech support team may be strong and helpful to customers.
+---
+
+## Senior Citizen
+
+- Senior Citizens have twice the churn rate as non-senior citizens.
+- Provide new or enhance existing senior discounts to prevent churn.
+- Investigate if churn comes from switching plans or the consequences of aging (passing away).
+---
+
+## Dependents
+
+- It looks like people are less likely to churn if they have dependents.
+- Those with dependents may have favorable rates for each additional line. Consider reducing single line prices or providing other offers to those with single lines.
+---
+
+# Churn Counts
+## Monthly Charges Churn Counts
+
+- The bracket with the largest number of customers is the 75-100 Monthly Charges bracket. It also has the highest churn rate.
+- The 25-50 and 100-125 brackets are roughly tied for the lowest number customers.
+- Customers with 0-25 Monthly Charges have the lowest churn rate, but are likely on strictly data limited plans.
+---
+
+## Tenure Churn Counts
+
+- Customers tend to churn more in the first couple of months. 
+- The churn ratio gradually decreases at higher levels of tenure.
+- The tenure groups with the largest number of customers are the groups with the lowest months and the highest months. 
+---
+
+# Executive Summary
+## Insights
+- Customers with Monthly Charges ranging from \$75-100 are the most numerous and have the highest churn rates.
+- The monthly charge brackets may represent different customer segments for targeted retention strategies.
+- Most of the company's customers are new customers, making onboarding experiences very significant to reducing churn.
+- Those on Month-to-Month contracts have around 14 times the churn rate of those on Two-Year contracts and around 4 times the churn rate of those on One-Year contracts.
+- Around 89% of churning customers are on Month-to-Month contracts.
+- Customers using the electronic payment method have higher churn rates than other payment method, which may indicate serious technical issues, poor user interface for inputting information, or lack of security for the payment method.
+- Senior Citizens have higher churn rates than non-seniors.
+- Customers using the Online Security service or Tech Support have lower churn rates than those who do not use them.
+
+## Recommendations
+- Since customers tend to churn significantly more after their first month, the company should prioritize deals and promotions that lock the customer into a 1 year or 2 contract. Developing a strong onboarding experience and engaging new customers is very important.
+- The company can offer customers discounted or free phones or discounts through statement credits to win over new customers, while locking them into longer contracts, which have significantly lower churn rates.
+- Promote add-ons and other services, especially the online security add-on. Investigate potential technical issues with the electronic payment system and encourage customers to use tech support when necessary.
+- Study factors that keep the highest tenure customers loyal such as plan stability or customer service. Use these insights to replicate loyalty drivers for newer customers. Offer referral bonuses to leverage the satisfaction of the highest tenure customers.
+- Consider cap-based pricing models or tiered loyalty rewards to soften the impact of long-term costs when customers track their expenses.
+- Develop targeted strategies for different customer segments, such as those with different levels of monthly spending.
+- Provide new or enhance existing senior discounts to reduce churn among senior customers. Investigate if the higher churn rates from senior citizens comes from switching plans or high age health compllications.
+- Customers without dependents have higher churn rates than those that do. Consider reducing single line prices or providing other offers to those with single lines to incentivize adding more lines.
+
+# Data Source and License
+- Dataset: Telco Customer Churn
+- Authors: scottdangelo
+- Source: [IBM](https://github.com/IBM/telco-customer-churn-on-icp4d)
+- License: Apache License 2.0
+- Reference: IBM. (2019). Telco Customer Churn for Watson Studio.
