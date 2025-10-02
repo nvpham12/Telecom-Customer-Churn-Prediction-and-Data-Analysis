@@ -1,8 +1,8 @@
 # Project Background
-This project demonstrates customer churn prediction using synthetic telecom data with the XGBoost algorithm and interactive visualization with Tableau.
+This project demonstrates data analytics and customer churn prediction using synthetic telecom data with the XGBoost algorithm. Data visualization was completed using Seaborn and Matplotlib. An interactive dashboard was created using Tableau.
 
 ## Tools & Technologies
-- **Pandas** – data manipulation and cleaning
+- **Pandas** – data manipulation, cleaning, and exporting cleaned data
 - **NumPy** - data transformation
 - **Matplotlib / Seaborn** – EDA and visualizations
 - **Scikit-learn** – data preprocessing and model evaluation
@@ -12,17 +12,23 @@ This project demonstrates customer churn prediction using synthetic telecom data
 - **Tableau** – interactive dashboarding
 
 ## Approach
-- Cleaned & transformed synthetic churn dataset; handled missing values, changed data types, encoded categorical features, and transformed skewed distributions.
+- Cleaned and transformed synthetic churn dataset: handled missing values, changed data types, encoded categorical features, and transformed skewed distributions.
 - Trained XGBoost models: baseline, hyperparameter-tuned, and SMOTE-balanced for class imbalance.
-- Visualized churn patterns and customer distributions using Seaborn.
+- Used Matplotlib and Seaborn to generate visualizations that show churn patterns and customer distributions.
+- Interpreted the visualizations, documenting and delivering actionable insights and recommendations.
 - Built a Tableau dashboard to visualize churn by tenure, contract type, and other features.
+---
 
 # Links
+## Data Analytics
 - [Data Analytics Jupyter Notebook](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction-and-Analysis/blob/main/Data%20Analysis%20Telecom%20Customer%20Churn.ipynb)
-- [Analytics Report](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction-and-Analysis/blob/main/Analytics%20Report.md)
+- [Full Data Analytics Report](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction-and-Analysis/blob/main/Analytics%20Report.md)
+## Churn Prediction
 - [Data Cleaning and Churn Prediction Jupyter Notebook](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction-and-Analysis/blob/main/Churn%20Prediction%20Telecom%20Customers.ipynb)
 - [Churn Prediction Model Technical Report](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction/blob/main/Technical%20Report.md)
+## Tableau Dashboard
 - [Tableau Dashboard](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17551339538610/Dashboard?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+---
 
 # Executive Summary
 ## Insights
@@ -36,7 +42,7 @@ This project demonstrates customer churn prediction using synthetic telecom data
 - Customers using the Online Security service or Tech Support have lower churn rates than those who do not use them.
 
 ## Recommendations
-- Since customers tend to churn significantly more after their first month, the company should prioritize deals and promotions that lock the customer into a 1 year or 2 contract. Developing a strong onboarding experience and engaging new customers is very important.
+- Since customers tend to churn significantly more after their first month, the company should prioritize deals and promotions that lock the customer into a 1-Year or 2-Year contract. Developing a strong onboarding experience and engaging new customers is very important.
 - The company can offer customers discounted or free phones or discounts through statement credits to win over new customers, while locking them into longer contracts, which have significantly lower churn rates.
 - Promote add-ons and other services, especially the online security add-on. Investigate potential technical issues with the electronic payment system and encourage customers to use tech support when necessary.
 - Study factors that keep the highest tenure customers loyal such as plan stability or customer service. Use these insights to replicate loyalty drivers for newer customers. Offer referral bonuses to leverage the satisfaction of the highest tenure customers.
@@ -52,6 +58,7 @@ This project demonstrates customer churn prediction using synthetic telecom data
 - Why do customers tend to churn most often after the first 1 or 2 months with the company? Is the onboarding experience lacking for new customers?
 - Are senior discounts offered? Are they discounted enough to prevent churn from senior customers?
 - How does the company's pricing and service coverage compare to competitors?
+---
 
 # Data Source and License
 - Dataset: Telco Customer Churn
