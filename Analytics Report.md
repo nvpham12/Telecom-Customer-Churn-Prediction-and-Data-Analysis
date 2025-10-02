@@ -14,24 +14,28 @@ This project demonstrates data analytics on customer churn patterns using synthe
 - Built a Tableau dashboard to visualize churn by tenure, contract type, and other features.
 
 # Links
-- [Data Analytics Jupyter Notebook]()
-- [Tableau Dashboard]()
+
+- [Data Analytics Jupyter Notebook](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction-and-Analysis/blob/main/Data%20Analysis%20Telecom%20Customer%20Churn.ipynb)
+- [Tableau Dashboard](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17551339538610/Dashboard?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
 # Numerical Feature Distributions
 ## Total Charges
+<img width="1000" height="600" alt="distribution_total_charges" src="https://github.com/user-attachments/assets/cad7c955-8576-4626-b838-485896e24f85" />
 
 - The company's has a consistently decreasing number of customers as Total Charges goes up. The rate of decrease is initially rapid (at lower levels of total charges) but tapers off at higher levels of total charges.
 - The majority of the company's customers are likely new customers or customers with cheaper plans, since bins with the lowest total charges have the most customers. 
 ---
 
 ## Monthly Charges
+<img width="1000" height="600" alt="distribution_monthly_charges" src="https://github.com/user-attachments/assets/2e4eb8e3-bc02-4ca2-a4de-ed4b1ad85141" />
 
 - The largest bin of customers have Monthly Charges of around \$20, which should represent cheap, single line plans.
-- For other levels of Monthly Charges, there are distinct a bell shaped curves at around 40 to 70 dollars of charges then another taller bell curve from 70 to 120 dollars.
+- For other levels of Monthly Charges, there are distinct a bell shaped curves at around \$40 to \$70 of charges then another taller bell curve from around \$70 to \$120 dollars.
 - These regions can represent different customer segments based on levels of Monthly Charges that can be targeted differently.
 ---
 
-### 30-70 Group
+### \$30-\$70 Group
+<img width="1000" height="600" alt="distribution_monthly_charges_30-70" src="https://github.com/user-attachments/assets/25072941-9035-4ea8-9b72-0c27f2627d58" />
 
 - For this customer segment, the company should focus on flexibility and affordability.
 - Offer personalized phone upgrades based on usage patterns.
@@ -42,7 +46,8 @@ This project demonstrates data analytics on customer churn patterns using synthe
 - Provide tips or tutorials to help these customers get more out of their current plan.
 ---
 
-### 70-120 Group
+### \$60-\$120 Group
+<img width="1000" height="600" alt="distribution_monthly_charges_60-120" src="https://github.com/user-attachments/assets/4e39b3a9-9e78-48cc-9986-351c3ef588b0" />
 
 - For this customer group, the company should focus on premium features and reliability.
 - Offer priority customer service or dedicated account managers.
@@ -54,6 +59,7 @@ This project demonstrates data analytics on customer churn patterns using synthe
 ---
 
 ## Tenure
+<img width="1000" height="600" alt="distribution_tenure" src="https://github.com/user-attachments/assets/52b3465a-ce3e-431c-9b3d-cb5433fa080e" />
 
 - The company's largest customer counts come from their lowest tenure (newest customers) and highest tenure (the oldest customers), especially the lowest tenure group.
 - The lowest tenure group has at least 50% more customers than any other group, including the group with the second most number of customers.
@@ -62,6 +68,7 @@ This project demonstrates data analytics on customer churn patterns using synthe
 
 # Churn Proportion Analysis Across Features
 ## Contract Type
+<img width="1000" height="600" alt="churn_by_contract" src="https://github.com/user-attachments/assets/b85eccd9-2acf-4974-bc72-2b53ba9e2373" />
 
 - The churn rate drastically decreases between contract types.
 - Customers on One-Year contract have around a quarter of the churn rate as those on Month-to-Month contracts.
@@ -79,35 +86,42 @@ This project demonstrates data analytics on customer churn patterns using synthe
 - The number of churning customers drastically decreases between contract types.
 
 ### Contract Churn Pie
+<img width="1000" height="600" alt="pie_contract_churn" src="https://github.com/user-attachments/assets/30cbf485-4fc7-4737-8df8-8025fdc27862" />
 
 - Of all churning customers, approximately 89% are on Month-to-Month contracts, 9% on 1-Year contracts, and 2% on 2-Year contracts. 
 - For the company, it is of the utmost importance to get customers on 1 or 2 year contracts. Even 1-Year contracts will drastically reduce churn rate.
 ---
 
 ## Internet Service
+<img width="1000" height="600" alt="churn_by_internet_service" src="https://github.com/user-attachments/assets/3e5226f8-3095-432c-8659-9bd1fffd3668" />
 
 - There are higher proportions of customers who churn when they have internet service. 
 - Fiber Optic users have around double the churn ratio of DSL users, indicating potential issues with the service.
 ---
 
 ## Payment Method
+<img width="1000" height="600" alt="churn_by_payment_method" src="https://github.com/user-attachments/assets/3fbfa14a-aaf4-44a4-9de0-cf35ce1297d2" />
+
 - Customers who pay via electronic checks have higher proportions of churning customers than those who use other payment methods (and those other payment methods have roughly the same levels of churn). 
 - This may be a sign of serious technical problems with the electronic check payment method leading to churn.
 ---
 
 ## Online Security Churn Proportions
+<img width="1000" height="600" alt="churn_by_online_security" src="https://github.com/user-attachments/assets/27c54739-f9e5-4538-b2e1-9acd79b7d765" />
 
 - The churn rate seems to be higher for people who have not had online security.
 - Market the benefits of having online security and the strengths of the company's service.
 ---
 
 ## Tech Support Churn Proportions
+<img width="1000" height="600" alt="churn_by_Tech_Support" src="https://github.com/user-attachments/assets/56b9eb72-be41-4c75-8acc-79b8c7bfe9f2" />
 
 - The churn rate seems to be higher for people who have not had tech support.
 - Encourage customers to use tech support as the company's tech support team may be strong and helpful to customers.
 ---
 
 ## Senior Citizen
+<img width="1000" height="600" alt="churn_by_Senior_Citizen" src="https://github.com/user-attachments/assets/f63b1686-7d9e-4986-9748-4e53b7036a16" />
 
 - Senior Citizens have twice the churn rate as non-senior citizens.
 - Provide new or enhance existing senior discounts to prevent churn.
@@ -115,6 +129,7 @@ This project demonstrates data analytics on customer churn patterns using synthe
 ---
 
 ## Dependents
+<img width="1000" height="600" alt="churn_by_Dependents" src="https://github.com/user-attachments/assets/b60e163e-5448-4aab-86eb-afc4624c420f" />
 
 - It looks like people are less likely to churn if they have dependents.
 - Those with dependents may have favorable rates for each additional line. Consider reducing single line prices or providing other offers to those with single lines.
@@ -122,13 +137,15 @@ This project demonstrates data analytics on customer churn patterns using synthe
 
 # Churn Counts
 ## Monthly Charges Churn Counts
+<img width="1000" height="600" alt="counts_monthly_charges" src="https://github.com/user-attachments/assets/c402eea8-347a-40a8-9474-19abbbd9cd49" />
 
 - The bracket with the largest number of customers is the 75-100 Monthly Charges bracket. It also has the highest churn rate.
-- The 25-50 and 100-125 brackets are roughly tied for the lowest number customers.
-- Customers with 0-25 Monthly Charges have the lowest churn rate, but are likely on strictly data limited plans.
+- The \$25-\$50 and \$100-\$125 brackets are roughly tied for the lowest number customers.
+- Customers with \$0-\$25 Monthly Charges have the lowest churn rate, but are likely on strictly data limited plans.
 ---
 
 ## Tenure Churn Counts
+<img width="1000" height="600" alt="counts_tenure" src="https://github.com/user-attachments/assets/893573f6-fb9c-4c94-9e70-7eaff8d56a9b" />
 
 - Customers tend to churn more in the first couple of months. 
 - The churn ratio gradually decreases at higher levels of tenure.
