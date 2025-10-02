@@ -7,10 +7,10 @@ This project demonstrates data analytics on customer churn patterns using synthe
 - **Tableau** – interactive dashboarding
 
 ## Approach
-- Cleaned & transformed synthetic churn dataset; handled missing values, changed data types, encoded categorical features, and transformed skewed distributions. 
+- Cleaned and transformed synthetic churn dataset: handled missing values, changed data types, encoded categorical features, and transformed skewed distributions. 
 - The data used for the analytics notebook was a previously cleaned copy. The code for data cleaning is in the Churn Prediction Model Jupyter Notebook file.
 - Used Matplotlib and Seaborn to generate visualizations that show churn patterns and customer distributions.
-- Interpreted the visualizations, documenting actionable insights and recommendations.
+- Interpreted the visualizations, documenting and delivering actionable insights and recommendations.
 - Built a Tableau dashboard to visualize churn by tenure, contract type, and other features.
 
 # Links
