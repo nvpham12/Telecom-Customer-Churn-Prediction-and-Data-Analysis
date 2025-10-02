@@ -26,7 +26,7 @@ This project demonstrates customer churn prediction using synthetic telecom data
 
 # Executive Summary
 ## Insights
-- Customers with Monthly Charges ranging from \$75-100 are the most numerous and have the highest churn rates.
+- Customers with Monthly Charges ranging from \$75-\$100 are the most numerous and have the highest churn rates.
 - The monthly charge brackets may represent different customer segments for targeted retention strategies.
 - Most of the company's customers are new customers, making onboarding experiences very significant to reducing churn.
 - Those on Month-to-Month contracts have around 14 times the churn rate of those on Two-Year contracts and around 4 times the churn rate of those on One-Year contracts.
