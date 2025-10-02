@@ -2,7 +2,7 @@
 This project demonstrates customer churn prediction using synthetic telecom data with the XGBoost algorithm and interactive visualization with Tableau.
 
 ## Links
-- [Jupyter Notebook](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction/blob/main/Telco%20Customer%20Churn%20Prediction.ipynb)  
+- [Jupyter Notebook](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction-and-Analysis/blob/main/Churn%20Prediction%20Telecom%20Customers.ipynb)
 - [Tableau dashboard](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17551339538610/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
 ## Tools & Technologies
@@ -149,71 +149,8 @@ Feature importance is used to rank how inputs affect a model's predictions. In l
 - Contract Type becomes more important with both features having the highest ranks now.
 - Online Security becomes more important than Device Protection, while Payment Method is far less important after data balancing.
 
-# Churn Proportion Analysis
-Proportions of churned and retained customers are visualized across key features:
-
-## Contract Type
-![churn_by_contract](https://github.com/user-attachments/assets/7731f475-183a-4e91-9e0e-21b3be36ebe2)
-
-- Customers with month-to-month contracts have the highest churn rates, while those on 1-year and 2-year contracts are significantly less likely to churn.
-- This suggests that contract length is negatively associated with churn, and long-term contracts may help retain customers.
-- This plot's proportions are relative to the category.
-
----
-| Contract Type     | Churners | % of Total | Non-Churners | % of Total |
-|-------------------|----------|------------|---------------|------------|
-| Month-to-Month    | 1,655    | 23.50%     | 2,220         | 31.52%     |
-| One-Year          | 166      | 2.36%      | 1,307         | 18.56%     |
-| Two-Year          | 48       | 0.68%      | 1,647         | 23.38%     |
-
-- Actual percentages for the contract types by churn to the entire dataset are shown in this table.
-- Since $1655 /  (1655 + 166 + 48) = 0.8854$, around 89% of churning customers are on Month-to-Month contracts.
-- The number of non-churners is greater with Two-Year Contracts than with One-Year Contracts.
-
----
-![churn_contract_pie](https://github.com/user-attachments/assets/4ec9bc1a-c1aa-4f57-896b-20399ec3d5c4)
-
-Of all churning customers, around 90% are on month-to-month contracts. This drops to around 9% for customers on 1 year contracts. For the company, it is of the utmost importance to get customers on 1 or 2 year contracts, which will drastically reduce churn rate.
-
----
-## Internet Service
-![churn_by_internet_service](https://github.com/user-attachments/assets/72ac1b6a-1aa0-42df-8da1-ecc28158f810)
-
-Churn is also higher among customers who have internet service with the company. Churn rate is even higher for those who have fiber optic connections compared to DSL. This may reflect potential service quality or satisfaction issues with fiber optic offerings and even the internet service in general.
-
----
-## Payment Methods 
-![churn_by_payment_method](https://github.com/user-attachments/assets/ece176ff-cc52-4a1e-b5f2-52db3eb62343)
-
-Customers who pay via electronic checks have higher proportions of churning customers than those who use other payment methods (and those other payment methods have roughly the same levels of churn). This could indicate high frequencies of technical issues for customers pay using electronic checks, which leads to frustration and churn.
-
----
-## Tenure
-![churn_by_tenure](https://github.com/user-attachments/assets/c34ea95f-1528-410d-8fe5-e1deccaf4fdf)
-
-Customers tend to churn the most within the first couple months of tenure. The first month is the most important with customers churning more in that particular month than in any other month.
-
-# Executive Summary
-## Insights
-- Churning customers with month-to-month contracts have been ~9× more likely to churn than those on annual contracts.
-- Internet service and payments via electronic checks show elevated churn risk.
-- Most churn occurs within the first 4 months of a customer's tenure, with the first month having the highest churn risk.
-
-## Recommendations
-- For predicting customer churn, the SMOTE model would be preferred despite having lower accuracy than the Base Model and Tuned Models. Since telecom data tends to be imbalanced with customer churn being the minority, models should be optimized for the highest recall, which the SMOTE Model has (up to 42% improvement from the Tuned Model).
-- Because customers tend to churn significantly more after their first month with the telecom company, the company should prioritize deals and promotions that lock the customer into a 1 year or 2 contract.
-- The company can offer customers discounted or free phones or discounts through statement credits to win over new customers, while locking them into 1 or 2 year contracts.
-- Since churn rates drop substantially after the first year, the company may benefit from offering upfront incentives to encourage long-term commitments and reduce early-stage churn (which is where churn rate is the highest).
-
-## Clarifying Questions
-- Why are customers with internet service more likely to churn?
-- Are there pain points in the onboarding process?
-- Do electronic check users face billing friction or service issues?
-
-## Next Steps
-- Investigate whether onboarding experience is correlated with early churn.
-- Explore alternative classification algorithms such as Random Forest or Logistic Regression.
-- Test different resampling strategies beyond SMOTE.
+# Conclusion
+For predicting customer churn, the SMOTE model should chosen despite having lower accuracy than the Base Model and Tuned Models. Because telecom data tends to be imbalanced with customer churn being the minority, models should be optimized for the highest recall, which the SMOTE Model has (up to 42% improvement from the Tuned Model).
 
 # Data Source and License
 - Dataset: Telco Customer Churn
