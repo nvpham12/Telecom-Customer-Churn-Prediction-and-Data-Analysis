@@ -1,5 +1,5 @@
 # Project Background
-This project demonstrates data analytics on customer churn patterns using synthetic telecom data. Data visualization was completed using Seaborn and Matplotlib. Interactive visualization was done with Tableau.
+This project demonstrates data analytics on churn patterns from synthetic telecom customer data. Data visualization was completed using Seaborn and Matplotlib. An interactive dashboard was built using Tableau.
 
 ## Tools & Technologies
 - **Pandas** – data manipulation
@@ -13,10 +13,13 @@ This project demonstrates data analytics on customer churn patterns using synthe
 - Interpreted the visualizations, documenting and delivering actionable insights and recommendations.
 - Built a Tableau dashboard to visualize churn by tenure, contract type, and other features.
 
-# Links
+---
 
+# Links
 - [Data Analytics Jupyter Notebook](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction-and-Analysis/blob/main/Data%20Analysis%20Telecom%20Customer%20Churn.ipynb)
 - [Tableau Dashboard](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17551339538610/Dashboard?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+
+---
 
 # Numerical Feature Distributions
 ## Total Charges
@@ -30,7 +33,7 @@ This project demonstrates data analytics on customer churn patterns using synthe
 <img width="1000" height="600" alt="distribution_monthly_charges" src="https://github.com/user-attachments/assets/2e4eb8e3-bc02-4ca2-a4de-ed4b1ad85141" />
 
 - The largest bin of customers have Monthly Charges of around \$20, which should represent cheap, single line plans.
-- For other levels of Monthly Charges, there are distinct a bell shaped curves at around \$40 to \$70 of charges then another taller bell curve from around \$70 to \$120 dollars.
+- For other levels of Monthly Charges, there are distinct a bell shaped curves at around \$40-\$70 of charges then another taller bell curve from around \$70-\$120 dollars.
 - These regions can represent different customer segments based on levels of Monthly Charges that can be targeted differently.
 ---
 
@@ -89,7 +92,7 @@ This project demonstrates data analytics on customer churn patterns using synthe
 <img width="1000" height="600" alt="pie_contract_churn" src="https://github.com/user-attachments/assets/30cbf485-4fc7-4737-8df8-8025fdc27862" />
 
 - Of all churning customers, approximately 89% are on Month-to-Month contracts, 9% on 1-Year contracts, and 2% on 2-Year contracts. 
-- For the company, it is of the utmost importance to get customers on 1 or 2 year contracts. Even 1-Year contracts will drastically reduce churn rate.
+- For the company, it is of the utmost importance to get customers on 1 or 2-Year contracts. Even 1-Year contracts will drastically reduce churn rate.
 ---
 
 ## Internet Service
@@ -139,7 +142,7 @@ This project demonstrates data analytics on customer churn patterns using synthe
 ## Monthly Charges Churn Counts
 <img width="1000" height="600" alt="counts_monthly_charges" src="https://github.com/user-attachments/assets/c402eea8-347a-40a8-9474-19abbbd9cd49" />
 
-- The bracket with the largest number of customers is the 75-100 Monthly Charges bracket. It also has the highest churn rate.
+- The bracket with the largest number of customers is the \$75-\$100 Monthly Charges bracket. It also has the highest churn rate.
 - The \$25-\$50 and \$100-\$125 brackets are roughly tied for the lowest number customers.
 - Customers with \$0-\$25 Monthly Charges have the lowest churn rate, but are likely on strictly data limited plans.
 ---
@@ -152,9 +155,14 @@ This project demonstrates data analytics on customer churn patterns using synthe
 - The tenure groups with the largest number of customers are the groups with the lowest months and the highest months. 
 ---
 
+# Tableau Dashboard Preview
+<img width="1635" height="1090" alt="Dashboard" src="https://github.com/user-attachments/assets/2a765d0e-ce9c-4884-8674-cb68bf8af24e" />
+
+---
+
 # Executive Summary
 ## Insights
-- Customers with Monthly Charges ranging from \$75-100 are the most numerous and have the highest churn rates.
+- Customers with Monthly Charges ranging from \$75-\$100 are the most numerous and have the highest churn rates.
 - The monthly charge brackets may represent different customer segments for targeted retention strategies.
 - Most of the company's customers are new customers, making onboarding experiences very significant to reducing churn.
 - Those on Month-to-Month contracts have around 14 times the churn rate of those on Two-Year contracts and around 4 times the churn rate of those on One-Year contracts.
@@ -164,7 +172,7 @@ This project demonstrates data analytics on customer churn patterns using synthe
 - Customers using the Online Security service or Tech Support have lower churn rates than those who do not use them.
 
 ## Recommendations
-- Since customers tend to churn significantly more after their first month, the company should prioritize deals and promotions that lock the customer into a 1 year or 2 contract. Developing a strong onboarding experience and engaging new customers is very important.
+- Since customers tend to churn significantly more after their first month, the company should prioritize deals and promotions that lock the customer into a 1-Year or 2-Year contract. Developing a strong onboarding experience and engaging new customers is very important.
 - The company can offer customers discounted or free phones or discounts through statement credits to win over new customers, while locking them into longer contracts, which have significantly lower churn rates.
 - Promote add-ons and other services, especially the online security add-on. Investigate potential technical issues with the electronic payment system and encourage customers to use tech support when necessary.
 - Study factors that keep the highest tenure customers loyal such as plan stability or customer service. Use these insights to replicate loyalty drivers for newer customers. Offer referral bonuses to leverage the satisfaction of the highest tenure customers.
@@ -172,6 +180,8 @@ This project demonstrates data analytics on customer churn patterns using synthe
 - Develop targeted strategies for different customer segments, such as those with different levels of monthly spending.
 - Provide new or enhance existing senior discounts to reduce churn among senior customers. Investigate if the higher churn rates from senior citizens comes from switching plans or high age health compllications.
 - Customers without dependents have higher churn rates than those that do. Consider reducing single line prices or providing other offers to those with single lines to incentivize adding more lines.
+
+---
 
 # Data Source and License
 - Dataset: Telco Customer Churn
