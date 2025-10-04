@@ -1,6 +1,10 @@
 # Project Background
 This project demonstrates data analytics on churn patterns from synthetic telecom customer data. Data visualization was completed using Seaborn and Matplotlib. An interactive dashboard was built using Tableau.
 
+## Links
+- [Data Analytics Jupyter Notebook](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction-and-Analysis/blob/main/Data%20Analysis%20Telecom%20Customer%20Churn.ipynb)
+- [Tableau Dashboard](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17551339538610/Dashboard?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+
 ## Tools & Technologies
 - **Pandas** – data manipulation
 - **Matplotlib / Seaborn** – EDA and visualizations
@@ -13,11 +17,36 @@ This project demonstrates data analytics on churn patterns from synthetic teleco
 - Interpreted the visualizations, documenting and delivering actionable insights and recommendations.
 - Built a Tableau dashboard to visualize churn by tenure, contract type, and other features.
 
----
+## Data
+- The data contains information on telecom customer churn and contains 7043 rows and 21 columns.
+- Columns include customer demographics and add-on services also offered by the company.
+- The data is synthetic, made and shared by IBM.
 
-# Links
-- [Data Analytics Jupyter Notebook](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction-and-Analysis/blob/main/Data%20Analysis%20Telecom%20Customer%20Churn.ipynb)
-- [Tableau Dashboard](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17551339538610/Dashboard?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+### Schema
+
+| Field Name         | Type     |
+|--------------------|----------|
+| CustomerID         | object   |
+| Gender             | object   |
+| SeniorCitizen      | int64    |
+| Partner            | object   |
+| Dependents         | object   |
+| Tenure             | int64    |
+| PhoneService       | object   |
+| MultipleLines      | object   |
+| InternetService    | object   |
+| OnlineSecurity     | object   |
+| OnlineBackup       | object   |
+| DeviceProtection   | object   |
+| TechSupport        | object   |
+| StreamingTV        | object   |
+| StreamingMovies    | object   |
+| Contract           | object   |
+| PaperlessBilling   | object   |
+| PaymentMethod      | object   |
+| MonthlyCharges     | float64  |
+| TotalCharges       | object   |
+| Churn              | object   |
 
 ---
 
