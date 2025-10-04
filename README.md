@@ -1,6 +1,16 @@
 # Project Background
 This project demonstrates data analytics and customer churn prediction using synthetic telecom data with the XGBoost algorithm. Data visualization was completed using Seaborn and Matplotlib. An interactive dashboard was created using Tableau.
 
+## Links
+### Data Analytics
+- [Data Analytics Jupyter Notebook](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction-and-Analysis/blob/main/Data%20Analysis%20Telecom%20Customer%20Churn.ipynb)
+- [Full Data Analytics Report](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction-and-Analysis/blob/main/Analytics%20Report.md)
+### Churn Prediction
+- [Data Cleaning and Churn Prediction Jupyter Notebook](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction-and-Analysis/blob/main/Churn%20Prediction%20Telecom%20Customers.ipynb)
+- [Churn Prediction Model Technical Report](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction/blob/main/Technical%20Report.md)
+### Tableau Dashboard
+- [Tableau Dashboard](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17551339538610/Dashboard?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+
 ## Tools & Technologies
 - **Pandas** – data manipulation, cleaning, and exporting cleaned data
 - **NumPy** - data transformation
@@ -17,17 +27,12 @@ This project demonstrates data analytics and customer churn prediction using syn
 - Used Matplotlib and Seaborn to generate visualizations that show churn patterns and customer distributions.
 - Interpreted the visualizations, documenting and delivering actionable insights and recommendations.
 - Built a Tableau dashboard to visualize churn by tenure, contract type, and other features.
----
 
-# Links
-## Data Analytics
-- [Data Analytics Jupyter Notebook](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction-and-Analysis/blob/main/Data%20Analysis%20Telecom%20Customer%20Churn.ipynb)
-- [Full Data Analytics Report](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction-and-Analysis/blob/main/Analytics%20Report.md)
-## Churn Prediction
-- [Data Cleaning and Churn Prediction Jupyter Notebook](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction-and-Analysis/blob/main/Churn%20Prediction%20Telecom%20Customers.ipynb)
-- [Churn Prediction Model Technical Report](https://github.com/nvpham12/Telecom-Customer-Churn-Prediction/blob/main/Technical%20Report.md)
-## Tableau Dashboard
-- [Tableau Dashboard](https://public.tableau.com/views/TelecomCustomerChurnDashboard_17551339538610/Dashboard?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+## Data
+- The data contains information on telecom customer churn and contains 7043 rows and 21 columns.
+- Columns include customer demographics and add-on services also offered by the company.
+- The data is synthetic, made and shared by IBM.
+
 ---
 
 # Executive Summary
