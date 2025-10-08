@@ -43,26 +43,15 @@ This project demonstrates data analytics and customer churn prediction using syn
 - Those on Month-to-Month contracts have around 14 times the churn rate of those on Two-Year contracts and around 4 times the churn rate of those on One-Year contracts.
 - Around 89% of churning customers are on Month-to-Month contracts.
 - Customers using the electronic payment method have higher churn rates than other payment method, which may indicate serious technical issues, poor user interface for inputting information, or lack of security for the payment method.
-- Senior Citizens have higher churn rates than non-seniors.
 - Customers using the Online Security service or Tech Support have lower churn rates than those who do not use them.
 
 ## Recommendations
 - Since customers tend to churn significantly more after their first month, the company should prioritize deals and promotions that lock the customer into a 1-Year or 2-Year contract. Developing a strong onboarding experience and engaging new customers is very important.
 - The company can offer customers discounted or free phones or discounts through statement credits to win over new customers, while locking them into longer contracts, which have significantly lower churn rates.
 - Promote add-ons and other services, especially the online security add-on. Investigate potential technical issues with the electronic payment system and encourage customers to use tech support when necessary.
-- Study factors that keep the highest tenure customers loyal such as plan stability or customer service. Use these insights to replicate loyalty drivers for newer customers. Offer referral bonuses to leverage the satisfaction of the highest tenure customers.
-- Consider cap-based pricing models or tiered loyalty rewards to soften the impact of long-term costs when customers track their expenses.
 - Develop targeted strategies for different customer segments, such as those with different levels of monthly spending.
-- Provide new or enhance existing senior discounts to reduce churn among senior customers. Investigate if the higher churn rates from senior citizens comes from switching plans or high age health compllications.
 - Customers without dependents have higher churn rates than those that do. Consider reducing single line prices or providing other offers to those with single lines to incentivize adding more lines.
 
-## Clarifying Questions
-- Why do customers tend to churn more when they have internet services with the company?
-- Are there any issues with the company's internet services such as connection speed and stability, especially for fiber optic types?
-- Are there any technical problems with the payment system for electronics checks? Does this lead customers to churn?
-- Why do customers tend to churn most often after the first 1 or 2 months with the company? Is the onboarding experience lacking for new customers?
-- Are senior discounts offered? Are they discounted enough to prevent churn from senior customers?
-- How does the company's pricing and service coverage compare to competitors?
 ---
 
 # Data Source and License
@@ -70,4 +59,3 @@ This project demonstrates data analytics and customer churn prediction using syn
 - Authors: scottdangelo
 - Source: [IBM](https://github.com/IBM/telco-customer-churn-on-icp4d)
 - License: Apache License 2.0
-- Reference: IBM. (2019). Telco Customer Churn for Watson Studio.
